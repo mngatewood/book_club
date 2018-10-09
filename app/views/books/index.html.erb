@@ -1,0 +1,8 @@
+<h1> All Books </h1>
+
+<% @books.each do |book| %>
+  <%=book.title  %>
+  <li>Page Count: <%= book.page_count  %></li>
+  <li>Author: <%= book.author  %></li>
+  <li>Year Published: <%= book.year_published  %></li>
+  <% end %>
