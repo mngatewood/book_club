@@ -19,5 +19,5 @@
 .byebug_history
 
 coverage/
-
 tmp/
+.DS_store
