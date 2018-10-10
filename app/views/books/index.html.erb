@@ -1,7 +1,15 @@
 <h1> All Books </h1>
 
-<% @books.each do |book| %>
-  <%=book.title  %>
-  <li>Page Count: <%= book.page_count  %></li>
-  <li>Year Published: <%= book.year_published  %></li>
+<section class="books-container">
+  <% @books.each do |book| %>
+  <article>
+    <h2><%=book.title%> Rating:<%=book.average_rating%></h2>
+    <li>Author:  <%book.authors.each do |a| %>
+      <span><%= a.name %></span>
+      <%end%>
+    </li>
+    <li>Page Count: <%= book.page_count  %></li>
+    <li>Year Published: <%= book.year_published  %></li>
+  </article>
   <% end %>
+</section>

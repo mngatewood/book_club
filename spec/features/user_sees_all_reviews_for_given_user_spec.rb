@@ -20,7 +20,7 @@ describe "As a vistitor" do
 
   describe "When I visit user show page" do
 
-    it 'should see all reviews for the given user' do
+    xit 'should see all reviews for the given user' do
 
       visit '/users/1'
 
