@@ -1,0 +1,13 @@
+<h1 id="user-heading"><%= @user.name %></h1>
+
+<main id="user-reviews-container">
+  <% @reviews.each do |review| %>
+    <article>
+      <h3>Title: <%= review.title %></h3>
+      <h3>Rating: <%= review.rating %></h3>
+      <h3>Review:</h3>
+      <p><%= review.review %></p>
+    </article>
+  <% end %>
+</main>
+
