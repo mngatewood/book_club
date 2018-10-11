@@ -79,5 +79,11 @@ describe Book, type: :model do
 
       expect(highest_rated_titles).to eq ([@book_4,@book_2,@book_1])
     end
+
+    it 'returns the 3 lowest rated book titles' do
+      lowest_rated_titles = Book.bottom_three_books
+
+      expect(lowest_rated_titles).to eq ([@book_5,@book_1,@book_2])
+    end
   end
 end
