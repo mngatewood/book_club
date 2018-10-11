@@ -7,7 +7,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
 
   def average_rating
-    reviews.average(:rating).round(1)
+    reviews.count > 0 ? reviews.average(:rating).round(1) : 0
   end
 
   def other_authors(author_id)
@@ -25,6 +25,22 @@ class Book < ApplicationRecord
 
   def bottom_three_reviews
     reviews.order("rating ASC").limit(3)
+  end
+
+  def self.top_rated_books
+    select('books.*, AVG(rating) AS avg_rating')
+    .joins(:reviews)
+    .group(:id)
+    .order('avg_rating DESC')
+    .limit(3)
+  end
+
+  def self.low_rated_books
+    select('books.*, AVG(rating) AS avg_rating')
+    .joins(:reviews)
+    .group(:id)
+    .order('avg_rating ASC')
+    .limit(3)
   end
 
 end
