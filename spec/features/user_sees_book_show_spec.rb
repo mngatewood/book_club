@@ -26,7 +26,7 @@ describe "As a vistitor" do
     @review_8 = @user_3.reviews.create(title: "Expansive", review: "White Teeth is an expansive, detailed, and beautifully written attempt.", rating: 3, book_id: @book_3.id)
   end
 
-  describe "When I visit books show" do
+  describe "When I visit books show page" do
 
     it 'should see all books' do
       visit "/books/#{@book_1.id}"
@@ -34,6 +34,16 @@ describe "As a vistitor" do
       within("#book-header") do
         expect(page).to have_content(@book_1.title)
         expect(page).to have_content(@book_1.average_rating)
+      end
+      within("#book-reviews-container") do
+        expect(page).to have_content(@review_2.review)
+        expect(page).to have_content(@review_3.review)
+        expect(page).to have_content(@review_4.review)
+        expect(page).to have_content(@review_6.review)
+        expect(page).to have_content(@review_2.title)
+        expect(page).to have_content(@review_3.title)
+        expect(page).to have_content(@review_4.title)
+        expect(page).to have_content(@review_6.title)
       end
     end
   end

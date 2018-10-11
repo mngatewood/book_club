@@ -1,1 +1,13 @@
 <h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%></h1>
+
+<main id="book-reviews-container">
+  <h2>All Reviews</h2>
+  <% @reviews.each do |review| %>
+    <article>
+      <h3>Title: <%= review.title %> - reviewed by <%=review.user.name%></h3>
+      <h3>Rating: <%= review.rating %></h3>
+      <h3>Review:</h3>
+      <p><%= review.review %></p>
+    </article>
+  <% end %>
+</main>
