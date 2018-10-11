@@ -27,7 +27,7 @@ class Book < ApplicationRecord
     reviews.order("rating ASC").limit(3)
   end
 
-  def self.top_rated_books
+  def self.top_three_books
     select('books.*, AVG(rating) AS avg_rating')
     .joins(:reviews)
     .group(:id)
@@ -35,7 +35,7 @@ class Book < ApplicationRecord
     .limit(3)
   end
 
-  def self.low_rated_books
+  def self.bottom_three_books
     select('books.*, AVG(rating) AS avg_rating')
     .joins(:reviews)
     .group(:id)
