@@ -34,7 +34,7 @@ describe "As a vistitor" do
 
       visit "/authors/#{@author_1.id}"
 
-      save_and_open_page
+      # save_and_open_page
 
       within("#author-heading") do
         expect(page).to have_content(@author_1.name)
