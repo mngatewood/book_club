@@ -32,6 +32,25 @@ describe "As a vistitor" do
         expect(page).to have_content(@book_1.title)
         expect(page).to have_content(@book_1.average_rating)
       end
+
+      within("#book-stats") do
+        expect(page).to have_content("Author(s): #{@author_1.name}")
+        expect(page).to have_content("Pages: #{@book_1.page_count}")
+        expect(page).to have_content("Year Published: #{@book_1.year_published}")
+      end
+
+      within("#top-reviews") do
+        expect(page).to have_content("#{@review_2.title}, #{@review_2.rating}, #{@review_2.user.name}")
+        expect(page).to have_content("#{@review_6.title}, #{@review_6.rating}, #{@review_6.user.name}")
+        expect(page).to have_content("#{@review_3.title}, #{@review_3.rating}, #{@review_3.user.name}")
+      end
+
+      within("#bottom-reviews") do
+        expect(page).to have_content("#{@review_3.title}, #{@review_3.rating}, #{@review_3.user.name}")
+        expect(page).to have_content("#{@review_4.title}, #{@review_4.rating}, #{@review_4.user.name}")
+        expect(page).to have_content("#{@review_6.title}, #{@review_6.rating}, #{@review_6.user.name}")
+      end
+
       within("#book-reviews-container") do
         expect(page).to have_content(@review_2.review)
         expect(page).to have_content(@review_3.review)
