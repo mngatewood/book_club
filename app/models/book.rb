@@ -11,13 +11,20 @@ class Book < ApplicationRecord
   end
 
   def other_authors(author_id)
-    other_authors = authors.where.not(id: author_id)
-    other_author_names = other_authors.map{|a|a.name}
-    other_authors.count > 0 ? other_author_names : ["None"]
+    other_authors = authors.where.not(id: author_id).map(&:name)
+    other_authors.count > 0 ? other_authors : ["None"]
   end
 
   def top_review
-    reviews.order("rating DESC").first
+    reviews.order("rating DESC").limit(1).first
+  end
+
+  def top_three_reviews
+    reviews.order("rating DESC").limit(3)
+  end
+
+  def bottom_three_reviews
+    reviews.order("rating ASC").limit(3)
   end
 
 end
