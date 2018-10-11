@@ -14,12 +14,11 @@
         <h3>Published in <%= book.year_published %></h3>
       </div>
       <div class="author-book-top-review">
-        <h3>Review from <%= book.top_review.user_name %></h3>
+        <h3>Review from <%= book.top_review.user.name %></h3>
         <h3><%= book.top_review.title %></h3>
         <h3>Rating: <%= book.top_review.rating %></h3>
-        <p><%= book.top_review.review %></p>        
+        <p><%= book.top_review.review %></p>
       </div>
     </article>
   <% end %>
 </main>
-
