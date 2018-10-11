@@ -8,14 +8,14 @@ describe "As a vistitor" do
       @user_3 = User.create(name: "David")
       @book_1 = Book.create(title: "Black Beauty", page_count: 255, year_published: 1877)
       @book_2 = Book.create(title: "Black Friday", page_count: 133, year_published: 1986)
-      @review_1 = @user_1.reviews.create(title: "Flirtation", review: "There are ways.", rating: 5, book_id: @book_1.id)
-      @review_2 = @user_1.reviews.create(title: "Your best friend until you find out he’s a drug dealer", review: "The Great Gatsby is your neighbor.", rating: 5, book_id: @book_1.id)
-      @review_3 = @user_1.reviews.create(title: "Great story", review: "It is a great story.", rating: 3, book_id: @book_1.id)
-      @review_4 = @user_2.reviews.create(title: "Who says psychopaths aren’t romantic?", review: "If I saw you everyday, forever, I would remember this time.", rating: 3, book_id: @book_1.id)
-      @review_5 = @user_2.reviews.create(title: "Needs an editor.", review: "David Goodis needs an editor.", rating: 3, book_id: @book_1.id)
-      @review_6 = @user_2.reviews.create(title: "A hefty volume", review: "This is a hefty and imposing volume.", rating: 4, book_id: @book_1.id)
-      @review_7 = @user_3.reviews.create(title: "Must read", review: "The idea that there exists such thing as a “must read” book.", rating: 2, book_id: @book_2.id)
-      @review_8 = @user_3.reviews.create(title: "Expansive", review: "White Teeth is an expansive, detailed, and beautifully written attempt.", rating: 1, book_id: @book_2.id)
+      @review_1 = @user_1.reviews.create(title: "Flirtation", review: "There are ways.", rating: 5, book: @book_1)
+      @review_2 = @user_1.reviews.create(title: "Your best friend until you find out he’s a drug dealer", review: "The Great Gatsby is your neighbor.", rating: 5, book: @book_1)
+      @review_3 = @user_1.reviews.create(title: "Great story", review: "It is a great story.", rating: 3, book: @book_1)
+      @review_4 = @user_2.reviews.create(title: "Who says psychopaths aren’t romantic?", review: "If I saw you everyday, forever, I would remember this time.", rating: 3, book: @book_1)
+      @review_5 = @user_2.reviews.create(title: "Needs an editor.", review: "David Goodis needs an editor.", rating: 3, book: @book_1)
+      @review_6 = @user_2.reviews.create(title: "A hefty volume", review: "This is a hefty and imposing volume.", rating: 4, book: @book_1)
+      @review_7 = @user_3.reviews.create(title: "Must read", review: "The idea that there exists such thing as a “must read” book.", rating: 2, book: @book_2)
+      @review_8 = @user_3.reviews.create(title: "Expansive", review: "White Teeth is an expansive, detailed, and beautifully written attempt.", rating: 1, book: @book_2)
     end
 
   describe "When I visit user show page" do
@@ -24,7 +24,6 @@ describe "As a vistitor" do
 
       visit "/users/#{@user_1.id}"
 
-      save_and_open_page
 
       within("#user-heading") do
         expect(page).to have_content(@user_1.name)
