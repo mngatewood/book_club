@@ -1,7 +1,19 @@
-<h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%></h1>
+<h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
+
+<section id="book-stats">
+  <ul>
+    <li>Author(s): <%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
+    <li>Pages: <%=@book.page_count%></li>
+    <li>Year Published: <%=@book.year_published%> </li>
+  </ul>
+  <h2>Top 3 Reviews</h2>
+  <ul>
+    <li> </li>
+  </ul>
+</section>
 
 <main id="book-reviews-container">
-  <h2>All Reviews</h2>
+  <h2>All Reviews for <%=@book.title%></h2>
   <% @reviews.each do |review| %>
     <article>
       <h3>Title: <%= review.title %> - reviewed by <%=review.user.name%></h3>
