@@ -1,9 +1,29 @@
 <h1> All Books </h1>
 
-<section class="books-container">
+<section id="books-stats">
+  <h2>Highest Rated Books</h2>
+  <ul>
+    <% @books.top_three_books.each do |b| %>
+    <li><%= b.title %></li>
+    <% end %>
+  </ul>
+  <h2>Lowest Rated Books</h2>
+  <ul>
+    <% @books.top_three_books.each do |b| %>
+    <li><%= b.title %></li>
+    <% end %>
+  </ul>
+  <h2>Users with Most Reviews</h2>
+  <ul>
+    <% @top_users.each do |u| %>
+      <li><%= u.name %></li>
+    <% end %>  
+  </ul>
+</section>
+<main class="books-container">
   <% @books.each do |book| %>
   <article>
-    <h2><%=book.title%> Rating:<%=book.average_rating%></h2>
+    <h2><%=book.title%> Rating: <%=book.average_rating%> (<%=book.reviews.count%>)</h2>
     <li>Author:  <%book.authors.each do |a| %>
       <span><%= a.name %></span>
       <%end%>
@@ -12,4 +32,4 @@
     <li>Year Published: <%= book.year_published  %></li>
   </article>
   <% end %>
-</section>
+</main>
