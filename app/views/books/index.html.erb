@@ -3,13 +3,13 @@
 <section id="books-stats">
   <h2>Highest Rated Books</h2>
   <ul>
-    <% @books.top_three_books.each do |b| %>
+    <% @top_three_books.each do |b| %>
     <li><%= b.title %></li>
     <% end %>
   </ul>
   <h2>Lowest Rated Books</h2>
   <ul>
-    <% @books.top_three_books.each do |b| %>
+    <% @bottom_three_books.each do |b| %>
     <li><%= b.title %></li>
     <% end %>
   </ul>
