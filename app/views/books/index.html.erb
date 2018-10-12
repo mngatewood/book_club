@@ -20,6 +20,19 @@
     <% end %>  
   </ul>
 </section>
+<nav>
+  <form>
+    <h3>Sort by: </h3>
+    <select>
+      <option onclick="rating-desc()">
+            Highest to Lowest Rating
+      </option>
+      <option onclick="rating-asc()">
+            Lowest to Highest Rating
+      </option>
+    </select>
+  </form>
+</nav>
 <main class="books-container">
   <% @books.each do |book| %>
   <article>
