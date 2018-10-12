@@ -10,6 +10,20 @@ class Book < ApplicationRecord
     reviews.count > 0 ? reviews.average(:rating).round(1) : 0
   end
 
+  def self.sort_by_average_rating
+    select('books.*, AVG(rating) AS avg_rating')
+    .joins(:reviews)
+    .group(:id)
+    .order('avg_rating DESC')
+  end
+
+  def self.sort_by_ratings_count
+    select('books.*, count(reviews.id) as review_count')
+    .joins(:reviews)
+    .group(:id)
+    .order("review_count DESC")
+  end
+
   def other_authors(author_id)
     other_authors = authors.where.not(id: author_id).pluck(:name)
     other_authors.count > 0 ? other_authors : ["None"]
