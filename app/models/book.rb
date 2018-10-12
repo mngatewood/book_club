@@ -14,14 +14,14 @@ class Book < ApplicationRecord
     select('books.*, AVG(rating) AS avg_rating')
     .joins(:reviews)
     .group(:id)
-    .order('avg_rating DESC')
+    .order('avg_rating ASC')
   end
 
   def self.sort_by_ratings_count
     select('books.*, count(reviews.id) as review_count')
     .joins(:reviews)
     .group(:id)
-    .order("review_count DESC")
+    .order("review_count ASC")
   end
 
   def other_authors(author_id)
@@ -41,20 +41,20 @@ class Book < ApplicationRecord
     reviews.order("rating ASC").limit(3)
   end
 
-  def self.top_three_books
-    select('books.*, AVG(rating) AS avg_rating')
-    .joins(:reviews)
-    .group(:id)
-    .order('avg_rating DESC')
-    .limit(3)
-  end
-
   def self.bottom_three_books
     select('books.*, AVG(rating) AS avg_rating')
     .joins(:reviews)
     .group(:id)
-    .order('avg_rating ASC')
+    .order("avg_rating ASC")
     .limit(3)
   end
+
+  def self.top_three_books
+    select('books.*, AVG(rating) AS avg_rating')
+    .joins(:reviews)
+    .group(:id)
+    .order("avg_rating DESC")
+    .limit(3)
+  end  
 
 end
