@@ -25,4 +25,19 @@ class BooksController < ApplicationController
     @reviews = @book.reviews
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    destroy_all_reviews_for_book(@book)
+    destroy_all_bookauthors_for_book(@book)
+    @book.delete
+    redirect_to "/books"
+  end
+
+  def destroy_all_reviews_for_book(book)
+     book.reviews.each {|r| r.delete} if book.reviews
+  end
+
+  def destroy_all_bookauthors_for_book(book)
+     book.book_authors.each {|ba| ba.delete} if book.book_authors
+  end
 end
