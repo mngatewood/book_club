@@ -5,8 +5,4 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :book
 
-  def self.most_active_users
-    select('*').group(:user_id).count
-  end
-
 end
