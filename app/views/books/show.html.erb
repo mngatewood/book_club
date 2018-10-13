@@ -1,5 +1,7 @@
 <h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
-
+<p id="delete-book-link">
+  <%= link_to 'Delete Book', @book, :method => 'delete' %>
+</p>
 <section id="book-stats">
   <ul>
     <li>Author(s): <%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
