@@ -2,27 +2,50 @@ require 'rails_helper'
 
 describe "As a vistitor" do
 
+  before(:each) do
+    @author = Author.create(name: "Alexandre Dumas")
+    @book = @author.books.create(title: "Black Beauty", page_count: 255, year_published: 1877)
+  end
+
   describe "When I visit review new page" do
 
-    xit 'should show a form to add a new review for given book' do
+    it 'should show a form to add a new review for given book' do
 
-      @author = Author.create(name: "Alexandre Dumas")
-      @book = @author_1.books.create(title: "Black Beauty", page_count: 255, year_published: 1877)
-
-      visit "/reviews/new/#{@book.id}"
+      visit "/reviews/new?book=#{@book.id}"
 
       within("#new-review-heading") do
         expect(page).to have_content("Add a Review")
+        expect(page).to have_content("Book Title: #{@book.title}")
       end
 
-      within("#new-review-form") do
-        expect(page).to have_content("Book Title: #{@book.title}")
+      within("#new_review") do
+        expect(page).to have_content("Username")
         expect(page).to have_content("Title")
-        expect(page).to have_content("User")
         expect(page).to have_content("Rating")
         expect(page).to have_content("Review")
-        expect(page).to have_content("Submit")
       end
+    end
+  end
+
+  describe 'when I enter review information into the form' do
+
+    it 'should create a new review and return to the current book page' do
+
+      visit "/reviews/new?book=#{@book.id}"
+
+      page.fill_in 'Username', with: 'Bob'
+      page.fill_in 'Title', with: 'Not bad'
+      page.fill_in 'Rating', with: '3'
+      page.fill_in 'Review', with: 'It was just okay.'
+      click_button("Create Review")
+
+      within "article.book-container:last-child" do
+        expect(page).to have_content(@book.title)
+        expect(page).to have_content("Title: Not bad - reviewed by Bob")
+        expect(page).to have_content("Rating: 3")
+        expect(page).to have_content("It was just okay")
+      end
+
     end
   end
 end
