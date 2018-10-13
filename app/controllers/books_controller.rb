@@ -18,6 +18,7 @@ class BooksController < ApplicationController
   @top_three_books = Book.top_three_books
   @bottom_three_books = Book.bottom_three_books
   @top_users = User.most_active_users
+  @sort = params[:sort]
   end
 
   def show
