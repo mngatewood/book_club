@@ -1,27 +1,32 @@
-<h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
-<p id="delete-book-link">
-  <%= link_to 'Delete Book', @book, :method => 'delete' %>
-</p>
-<section id="book-stats">
+<header>
+  <h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
+  <p id="delete-book-link">
+    <%= link_to 'Delete Book', @book, :method => 'delete' %>
+  </p>
   <ul>
     <li>Author(s): <%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
     <li>Pages: <%=@book.page_count%></li>
     <li>Year Published: <%=@book.year_published%> </li>
   </ul>
-  <h2>Top Reviews</h2>
-  <ul id="top-reviews">
-    <% @book.top_three_reviews.each do |r|%>
-    <li> <%="#{r.title}, #{r.rating}, #{r.user.name}"%> </li>
-    <%end%>
-  </ul>
-  <h2>Worst Reviews</h2>
-  <ul id="bottom-reviews">
-    <% @book.bottom_three_reviews.each do |r|%>
-    <li> <%="#{r.title}, #{r.rating}, #{r.user.name}"%> </li>
-    <%end%>
-  </ul>
+</header>
+<section id="book-stats">
+  <div class="stats-container">
+    <h2>Top Reviews</h2>
+    <ul id="top-reviews">
+      <% @book.top_three_reviews.each do |r|%>
+      <li> <%="#{r.title}, #{r.rating}, #{r.user.name}"%> </li>
+      <%end%>
+    </ul>
+  </div>
+  <div class="stats-container">
+    <h2>Worst Reviews</h2>
+    <ul id="bottom-reviews">
+      <% @book.bottom_three_reviews.each do |r|%>
+      <li> <%="#{r.title}, #{r.rating}, #{r.user.name}"%> </li>
+      <%end%>
+    </ul>
+  </div>
 </section>
-
 <main id="book-reviews-container">
   <h2>All Reviews for <%=@book.title%></h2>
   <% @reviews.each do |review| %>

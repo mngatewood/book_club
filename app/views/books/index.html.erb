@@ -1,24 +1,31 @@
-<h1> All Books </h1>
-
+<header>
+  <h1> All Books </h1>
+</header>
 <section id="books-stats">
-  <h2>Highest Rated Books</h2>
-  <ul>
-    <% @top_three_books.each do |b| %>
-    <li><%= b.title %></li>
-    <% end %>
-  </ul>
-  <h2>Lowest Rated Books</h2>
-  <ul>
-    <% @bottom_three_books.each do |b| %>
-    <li><%= b.title %></li>
-    <% end %>
-  </ul>
-  <h2>Users with Most Reviews</h2>
-  <ul>
-    <% @top_users.each do |u| %>
-      <li><%= u.name %></li>
-    <% end %>  
-  </ul>
+  <div class="stats-container">
+    <h2>Highest Rated Books</h2>
+    <ul>
+      <% @top_three_books.each do |b| %>
+      <li><%= b.title %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="stats-container">
+    <h2>Lowest Rated Books</h2>
+    <ul>
+      <% @bottom_three_books.each do |b| %>
+      <li><%= b.title %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="stats-container">
+    <h2>Users with Most Reviews</h2>
+    <ul>
+      <% @top_users.each do |u| %>
+        <li><%= u.name %></li>
+      <% end %>  
+    </ul>
+  </div>
 </section>
 <nav>
   <form>
