@@ -1,0 +1,16 @@
+<header  id="new-book-heading">
+  <h1>Add a Book</h1>
+</header>
+<main>
+  <%= form_for Book.new do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :author_names, "Author(s)" %>
+    <%= f.text_field :author_names %>
+    <%= f.label :page_count, "Number of Pages"%>
+    <%= f.number_field :page_count %>
+    <%= f.label :year_published, "Year Published" %>
+    <%= f.text_field :year_published %>
+    <%= f.submit  %>
+  <%end%>
+</main>
