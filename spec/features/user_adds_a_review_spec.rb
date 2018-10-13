@@ -19,8 +19,8 @@ describe "As a vistitor" do
       end
 
       within("#new_review") do
-        expect(page).to have_content("Username")
-        expect(page).to have_content("Title")
+        expect(page).to have_content("User Name")
+        expect(page).to have_content("Review Title")
         expect(page).to have_content("Rating")
         expect(page).to have_content("Review")
       end
@@ -33,8 +33,8 @@ describe "As a vistitor" do
 
       visit "/reviews/new?book=#{@book.id}"
 
-      page.fill_in 'Username', with: 'Bob'
-      page.fill_in 'Title', with: 'Not bad'
+      page.fill_in 'User Name', with: 'Bob'
+      page.fill_in 'Review Title', with: 'Not bad'
       page.fill_in 'Rating', with: '3'
       page.fill_in 'Review', with: 'It was just okay.'
       click_button("Create Review")
