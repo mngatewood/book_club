@@ -12,4 +12,9 @@ class User < ApplicationRecord
     .limit(3)
   end
 
+  def self.get_id_from_name(name)
+    user = User.find_by(name: name)
+    user ? user.id : nil
+  end
+
 end
