@@ -6,10 +6,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    book = Book.find(params[:book])
+    # book = Book.find(params[:book])
     review = Review.new(review_params)
     if review.save
-      redirect_to "/books/#{book.id}"
+      redirect_to "/books/#{review.book_id}"
     else
       render :new
     end
