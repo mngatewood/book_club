@@ -25,7 +25,13 @@ class ReviewsController < ApplicationController
       new_user = User.create(name: review_params[:username])
       @user_id = new_user.id
     end
+  end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @user = @review.user_id
+    @review.delete
+    redirect_to "/users/#{@review.user_id}"
   end
 
   private
