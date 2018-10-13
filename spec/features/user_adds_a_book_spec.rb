@@ -30,8 +30,6 @@ describe "As a vistitor" do
     it 'should create a new book and redirect to the book show page' do
 
       visit "/books/new"
-
-      save_and_open_page
       
       page.fill_in 'Title', with: 'Killing Road'
       page.fill_in 'Author', with: 'Dave Mustaine'
