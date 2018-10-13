@@ -6,6 +6,8 @@ class Book < ApplicationRecord
   has_many :book_authors
   has_many :authors, through: :book_authors
 
+  attr_accessor :author_names
+
   def average_rating
     reviews.count > 0 ? reviews.average(:rating).round(1) : 0
   end
