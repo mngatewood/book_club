@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
   def create
     user_id = get_user_id(review_params[:username])
     review = Review.new(review_params.merge(user_id: user_id))
-    # binding.pry
     if review.save
       redirect_to "/books/#{review.book_id}"
     else
