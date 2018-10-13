@@ -1,14 +1,16 @@
-<h1 id="new-review-heading">Add a Review</h1>
-<h2>Book Title: <%= @book.title %></h2>
-<%= form_for Review.new do |f|%>
-  <%=f.label :title%>
-  <%=f.text_field :title%>
-  <%=f.label :review%>
-  <%=f.text_field :review%>
-  <%=f.label :rating%>
-  <%=f.number_field :rating%>
-  <%=f.label :user_id%>
-  <%=f.number_field :user_id%>
-  <%=f.hidden_field :book_id, :value => @book.id%>
-  <%=f.submit %>
+<header  id="new-review-heading">
+  <h1>Add a Review</h1>
+  <h2>Book Title: <%= @book.title %></h2>
+</header>
+<%= form_for Review.new do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+  <%= f.label :review %>
+  <%= f.text_area :review %>
+  <%= f.hidden_field :book_id, :value => @book.id %>
+  <%= f.submit  %>
 <%end%>
