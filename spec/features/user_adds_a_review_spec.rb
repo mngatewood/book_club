@@ -39,8 +39,11 @@ describe "As a vistitor" do
       page.fill_in 'Review', with: 'It was just okay.'
       click_button("Create Review")
 
-      within "article.book-container:last-child" do
+      within("#book-header") do
         expect(page).to have_content(@book.title)
+      end
+
+      within "article.review-container:last-child" do
         expect(page).to have_content("Title: Not bad - reviewed by Bob")
         expect(page).to have_content("Rating: 3")
         expect(page).to have_content("It was just okay")
