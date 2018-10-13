@@ -23,26 +23,48 @@
 <nav>
   <form>
     <h3>Sort by: </h3>
-    <select>
-      <option onclick="rating-desc()">
-            Highest to Lowest Rating
+    <select id="sort-books" onchange="location = this.value;">
+      <option
+        value="books"
+        <%= "selected='selected'" unless @sort %>>
+        Select
       </option>
-      <option onclick="rating-asc()">
-            Lowest to Highest Rating
+      <option value="books?sort=rating-desc" 
+        <%= "selected='selected'" if @sort == "rating-desc" %>>
+        Highest to Lowest Rating
+      </option>
+      <option value="books?sort=rating-asc" 
+        <%= "selected='selected'" if @sort == "rating-asc" %>>
+        Lowest to Highest Rating
+      </option>
+      <option value="books?sort=reviews-desc" 
+        <%= "selected='selected'" if @sort == "reviews-desc" %>>
+        Most to Least Reviews
+      </option>
+      <option value="books?sort=reviews-asc" 
+        <%= "selected='selected'" if @sort == "reviews-asc" %>>
+        Least to Most Reviews
+        </option>
+      <option value="books?sort=pages-desc" 
+        <%= "selected='selected'" if @sort == "pages-desc" %>>
+        Most to Least Pages</option>
+      <option value="books?sort=pages-asc" 
+        <%= "selected='selected'" if @sort == "pages-asc" %>>
+        Least to Most Pages
       </option>
     </select>
   </form>
 </nav>
 <main class="books-container">
   <% @books.each do |book| %>
-  <article>
-    <h2><%=book.title%> Rating: <%=book.average_rating%> (<%=book.reviews.count%>)</h2>
-    <li>Author:  <%book.authors.each do |a| %>
-      <span><%= a.name %></span>
+    <article id="<%= "book-container-#{book.id}" %>" class="book-container">
+      <h2><%=book.title%> Rating: <%=book.average_rating%> (<%=book.reviews.count%>)</h2>
+      <li>Author:  <%book.authors.each do |a| %>
+        <span><%= a.name %></span>
       <%end%>
-    </li>
-    <li>Page Count: <%= book.page_count  %></li>
-    <li>Year Published: <%= book.year_published  %></li>
-  </article>
+      </li>
+      <li>Page Count: <%= book.page_count %></li>
+      <li>Year Published: <%= book.year_published %></li>
+    </article>
   <% end %>
 </main>
