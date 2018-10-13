@@ -25,7 +25,7 @@ describe "As a vistitor" do
 
       click_button('Delete Review')
 
-      within("#user-heading") do
+      within("header") do
         expect(page).to have_content(@user.name)
       end
 

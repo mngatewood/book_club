@@ -24,12 +24,11 @@ describe "As a vistitor" do
 
       visit "/users/#{@user_1.id}"
 
-
-      within("#user-heading") do
+      within("header") do
         expect(page).to have_content(@user_1.name)
       end
 
-      within("#user-reviews-container") do
+      within("main") do
         expect(page).to have_content("Title: #{@review_1.title}")
         expect(page).to have_content("Title: #{@review_2.title}")
         expect(page).to have_content("Title: #{@review_3.title}")

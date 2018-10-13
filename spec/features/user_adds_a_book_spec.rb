@@ -52,7 +52,7 @@ describe "As a vistitor" do
       page.fill_in 'Year Published', with: '2015'
       click_button("Create Book")
 
-      within("#book-heading") do
+      within("header") do
         expect(page).to have_content("Dragon Prince")
         expect(page).to have_content("Author(s): Jane Meadows, Jill Rodgers")
         expect(page).to have_content("Pages: 98")

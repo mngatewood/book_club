@@ -26,7 +26,7 @@ describe "As a vistitor" do
       click_button('Delete Author')
 
       within("header") do
-        expect(page).to have_content(@author.name)
+        expect(page).to have_content("All Books")
       end
 
       within("main") do

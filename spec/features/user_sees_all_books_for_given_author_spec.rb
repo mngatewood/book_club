@@ -29,11 +29,11 @@ describe "As a vistitor" do
 
       visit "/authors/#{@author_1.id}"
 
-      within("#author-heading") do
+      within("header") do
         expect(page).to have_content(@author_1.name)
       end
 
-      within("#author-books-container") do
+      within("main") do
         expect(page).to have_content("Title: #{@book_1.title}")
         expect(page).to have_content("Title: #{@book_2.title}")
         expect(page).to_not have_content("Title: #{@book_3.title}")
