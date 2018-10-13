@@ -13,7 +13,7 @@ describe "As a vistitor" do
 
       visit "/users/#{@user.id}"
 
-      within("#user-header") do
+      within("#user-heading") do
         expect(page).to have_content(@user.name)
       end
 
@@ -25,7 +25,7 @@ describe "As a vistitor" do
 
       click_button('Delete Review')
 
-      within("#user-header") do
+      within("#user-heading") do
         expect(page).to have_content(@user.name)
       end
 

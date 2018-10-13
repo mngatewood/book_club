@@ -28,7 +28,7 @@ describe "As a vistitor" do
     it 'should see a book' do
       visit "/books/#{@book_1.id}"
 
-      within("#book-header") do
+      within("#book-heading") do
         expect(page).to have_content(@book_1.title)
         expect(page).to have_content(@book_1.average_rating)
         expect(page).to have_content("Author(s): #{@author_1.name}")

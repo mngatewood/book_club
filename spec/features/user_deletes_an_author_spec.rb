@@ -13,7 +13,7 @@ describe "As a vistitor" do
 
       visit "/authors/#{@author.id}"
 
-      within("#author-header") do
+      within("header") do
         expect(page).to have_content(@author.name)
       end
 
@@ -25,7 +25,7 @@ describe "As a vistitor" do
 
       click_button('Delete Author')
 
-      within("#author-header") do
+      within("header") do
         expect(page).to have_content(@author.name)
       end
 

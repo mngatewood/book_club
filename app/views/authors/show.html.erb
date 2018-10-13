@@ -1,9 +1,8 @@
-<header>
-  <h1 id="author-heading"><%= @author.name %></h1>
+<header id="author-heading">
+  <h1><%= @author.name %></h1>
   <div class="delete-button">
     <%= button_to 'Delete Author', @author, :method => 'delete' %>
   </div>
-
 </header>
 <main id="author-books-container">
   <h2>All Books</h2>

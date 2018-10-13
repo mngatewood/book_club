@@ -13,7 +13,7 @@ describe "As a vistitor" do
 
       visit "/books/#{@book.id}"
 
-      within("#book-header") do
+      within("header") do
         expect(page).to have_content(@book.title)
         expect(page).to have_content("Author(s): #{@author.name}")
         expect(page).to have_content("Pages: #{@book.page_count}")

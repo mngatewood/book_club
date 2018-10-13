@@ -39,7 +39,7 @@ describe "As a vistitor" do
       page.fill_in 'Review', with: 'It was just okay.'
       click_button("Create Review")
 
-      within("#book-header") do
+      within("#book-heading") do
         expect(page).to have_content(@book.title)
       end
 
