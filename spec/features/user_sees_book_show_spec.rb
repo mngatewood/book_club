@@ -25,15 +25,12 @@ describe "As a vistitor" do
 
   describe "When I visit books show page" do
 
-    it 'should see all books' do
+    it 'should see a book' do
       visit "/books/#{@book_1.id}"
 
       within("#book-header") do
         expect(page).to have_content(@book_1.title)
         expect(page).to have_content(@book_1.average_rating)
-      end
-
-      within("#book-stats") do
         expect(page).to have_content("Author(s): #{@author_1.name}")
         expect(page).to have_content("Pages: #{@book_1.page_count}")
         expect(page).to have_content("Year Published: #{@book_1.year_published}")
