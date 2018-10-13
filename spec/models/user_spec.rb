@@ -41,6 +41,23 @@ describe User, type: :model do
       most_active_users = User.most_active_users
       
       expect(most_active_users).to eq([@user_2, @user_3, @user_1])
+
+    end
+
+    it "should return id for matching name" do
+
+      id = User.get_id_from_name(@user_2.name)
+      
+      expect(id).to eq(@user_2.id)
+
+    end
+
+    it "should return nil if no matching name found" do
+      
+      id = User.get_id_from_name("Jack")
+      
+      expect(id).to eq(nil)
+      
     end
   end
 
