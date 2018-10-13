@@ -1,5 +1,5 @@
-<header>
-  <h1 id="book-header"><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
+<header id="book-header">
+  <h1><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
   <p id="delete-book-link">
     <%= link_to 'Delete Book', @book, :method => 'delete' %>
   </p>

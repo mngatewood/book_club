@@ -41,4 +41,27 @@ class BooksController < ApplicationController
   def destroy_all_bookauthors_for_book(book)
      book.book_authors.each {|ba| ba.delete} if book.book_authors
   end
+
+  def new
+    @book = Book.new
+  end
+
+  def create    
+    author_names = book_params[:author_names].split(",")
+    author_ids = Author.get_ids_from_names(author_names)
+    book = Book.new(book_params)
+    if book.save
+      BookAuthor.add_authors_to_book(book.id, author_ids)
+      redirect_to "/books/#{book.id}"
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :author_names, :year_published, :page_count)
+  end
+
 end
