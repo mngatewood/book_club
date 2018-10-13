@@ -45,8 +45,6 @@ describe "As a vistitor" do
 
       visit '/books?sort=pages-asc'
 
-      save_and_open_page
-
       within "article.book-container:first-child" do
         expect(page).to have_content(@book_1.title)
       end
