@@ -1,11 +1,14 @@
-<header>
-  <h1 id="user-heading"><%= @user.name %></h1>
+<header id="user-header">
+  <h1><%= @user.name %></h1>
 </header>
 <main id="user-reviews-container">
   <% @reviews.each do |review| %>
     <article>
       <h3>Title: <%= review.title %></h3>
       <h3>Rating: <%= review.rating %></h3>
+      <div class="delete-button">
+        <%= button_to 'Delete Review', review, :method => 'delete' %>
+      </div>
       <h3>Review:</h3>
       <p><%= review.review %></p>
     </article>
