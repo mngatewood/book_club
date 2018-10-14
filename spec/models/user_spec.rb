@@ -13,6 +13,10 @@ describe User, type: :model do
   describe 'Methods' do
 
     before(:each) do
+
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean
+
       @user_1 = User.create(name: "John")
       @user_2 = User.create(name: "Jane")
       @user_3 = User.create(name: "David")
@@ -35,7 +39,6 @@ describe User, type: :model do
       @review_10 = @user_4.reviews.create(title: "Expansive", review: "White Teeth is an expansive, detailed, and beautifully written attempt.", rating: 1, book: @book_5)
     end
 
-
     it "should return three users with most reviews" do
 
       most_active_users = User.most_active_users
@@ -46,7 +49,7 @@ describe User, type: :model do
 
     it "should return id for matching name" do
 
-      id = User.get_id_from_name(@user_2.name)
+      id = User.get_user_id(@user_2.name)
       
       expect(id).to eq(@user_2.id)
 
@@ -54,12 +57,18 @@ describe User, type: :model do
 
     it "should return nil if no matching name found" do
       
-      id = User.get_id_from_name("Jack")
+      id = User.name_exists?("Jack")
       
-      expect(id).to eq(nil)
+      expect(id).to eq(false)
+      
+    end
+
+    it "should create a new user if name does not exist" do
+      
+      id = User.get_user_id("Jack")
+      
+      expect(id).to eq(6)
       
     end
   end
-
-
 end

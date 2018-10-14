@@ -12,9 +12,20 @@ class User < ApplicationRecord
     .limit(3)
   end
 
-  def self.get_id_from_name(name)
+  def self.name_exists?(name)
     user = User.find_by(name: name)
-    user ? user.id : nil
+    user ? user.id : false
   end
+
+  def self.get_user_id(name)
+    if name_exists?(name)
+      return name_exists?(name)
+    else
+      new_user = User.create(name: name)
+      return new_user.id
+    end
+  end
+
+
 
 end
