@@ -1,7 +1,16 @@
-#author-heading{
+h3{
+  font-weight:normal;
+}
 
+#author-heading{
+  background-color: green;
 }
 
 #author-books-container{
   background-color: green;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#author-book-title{
+
 }
