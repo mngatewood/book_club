@@ -42,9 +42,9 @@ describe "As a vistitor" do
         expect(page).to have_css("li", :text => @book_1.year_published)
         expect(page).to have_css("li", :text => @book_2.year_published)
         expect(page).to have_css("li", :text => @book_3.year_published)
-        expect(page).to have_css("h2", :text => @book_1.reviews.average(:rating).round(1))
-        expect(page).to have_css("h2", :text => @book_2.reviews.average(:rating).round(1))
-        expect(page).to have_css("h2", :text => @book_3.reviews.average(:rating).round(1))
+        expect(page).to have_css("li", :text => @book_1.reviews.average(:rating).round(1))
+        expect(page).to have_css("li", :text => @book_2.reviews.average(:rating).round(1))
+        expect(page).to have_css("li", :text => @book_3.reviews.average(:rating).round(1))
       end
     end
   end

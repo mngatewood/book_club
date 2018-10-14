@@ -44,9 +44,34 @@ describe "As a vistitor" do
       end
 
       within "article.review-container:last-child" do
-        expect(page).to have_content("Title: Not Bad - reviewed by Bob")
+        expect(page).to have_content("Title: Not Bad reviewed by Bob")
         expect(page).to have_content("Rating: 3")
         expect(page).to have_content("It was just okay")
+      end
+
+    end
+  end
+
+  describe 'if I dont enter all required fields' do
+
+    it 'should not save and redirect to new review' do
+
+      visit "/reviews/new?book=#{@book.id}"
+
+      # do not fill in  user name
+      page.fill_in 'Review Title', with: 'not bad'
+      page.fill_in 'Rating', with: '3'
+      page.fill_in 'Review', with: 'It was just okay.'
+      click_button("Create Review")
+
+      within("header") do
+        expect(page).to have_content(@book.title)
+      end
+
+      within "body" do
+        expect(page).to_not have_content("Title: Not Bad reviewed by Bob")
+        expect(page).to_not have_content("Rating: 3")
+        expect(page).to_not have_content("It was just okay")
       end
 
     end

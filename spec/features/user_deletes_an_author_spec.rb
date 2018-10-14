@@ -21,8 +21,8 @@ describe "As a vistitor" do
 
       within("main") do
         expect(page).to have_content("Title: #{@book.title}")
-        expect(page).to have_content("#{@book.page_count} pages")
-        expect(page).to have_content("Published in #{@book.year_published}")
+        expect(page).to have_content("Page Count: #{@book.page_count}")
+        expect(page).to have_content("Published: #{@book.year_published}")
       end
 
     end
@@ -40,7 +40,7 @@ describe "As a vistitor" do
 
       click_button('Delete Author')
 
-      within("header") do
+      within("nav") do
         expect(page).to have_content("All Books")
       end
 
@@ -54,8 +54,8 @@ describe "As a vistitor" do
 
       within("main") do
         expect(page).to_not have_content("Title: #{@book.title}")
-        expect(page).to_not have_content("#{@book.page_count} pages")
-        expect(page).to_not have_content("Published in #{@book.year_published}")
+        expect(page).to_not have_content("Page Count: #{@book.page_count}")
+        expect(page).to_not have_content("Published #{@book.year_published}")
       end
 
     end
