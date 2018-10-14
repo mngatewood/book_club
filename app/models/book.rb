@@ -1,6 +1,11 @@
 class Book < ApplicationRecord
 
+  before_save do |book|
+    book.title = book.title.downcase.titleize
+  end
+
   validates_presence_of :title, :page_count, :year_published
+  validates :title, uniqueness: true, on: :create
 
   has_many :reviews
   has_many :book_authors

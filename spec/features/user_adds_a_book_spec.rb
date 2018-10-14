@@ -3,7 +3,11 @@ require 'rails_helper'
 describe "As a vistitor" do
 
   before(:each) do
-    @author = Author.create(name: "Alexandre Dumas")
+    @author_1 = Author.create(name: "Alexandre Dumas")
+    @book_1 = @author_1.books.create(title: "Black Beauty", page_count: 255, year_published: 1877)
+    @book_2 = @author_1.books.create(title: "Black Friday", page_count: 192, year_published: 2003)
+    @book_3 = @author_1.books.create(title: "Choke", page_count: 352, year_published: 1996)
+    @book_4 = @author_1.books.create(title: "Collected Poems", page_count: 768, year_published: 1981)
   end
   
   describe "When I visit new book page" do
@@ -31,8 +35,8 @@ describe "As a vistitor" do
 
       visit "/books/new"
       
-      page.fill_in 'Title', with: 'Killing Road'
-      page.fill_in 'Author', with: 'Dave Mustaine'
+      page.fill_in 'Title', with: 'killing road'
+      page.fill_in 'Author', with: 'dave mustaine'
       page.fill_in 'Number of Pages', with: '176'
       page.fill_in 'Year Published', with: '2009'
       click_button("Create Book")
@@ -46,8 +50,8 @@ describe "As a vistitor" do
 
       visit "/books/new"
 
-      page.fill_in 'Title', with: 'Dragon Prince'
-      page.fill_in 'Author(s)', with: 'Jane Meadows, Jill Rodgers'
+      page.fill_in 'Title', with: 'DRAGON PRINCE'
+      page.fill_in 'Author(s)', with: 'JANE MEADOWS, JILL RODGERS'
       page.fill_in 'Number of Pages', with: '98'
       page.fill_in 'Year Published', with: '2015'
       click_button("Create Book")
@@ -57,6 +61,31 @@ describe "As a vistitor" do
         expect(page).to have_content("Author(s): Jane Meadows, Jill Rodgers")
         expect(page).to have_content("Pages: 98")
         expect(page).to have_content("Year Published: 2015")
+      end
+
+    end
+
+    it 'should not add a book if a book title already exists' do
+
+      visit "/books/new"
+      
+      page.fill_in 'Title', with: 'black friday'
+      page.fill_in 'Author', with: 'alexandre dumas'
+      page.fill_in 'Number of Pages', with: '176'
+      page.fill_in 'Year Published', with: '2009'
+      click_button("Create Book")
+
+      save_and_open_page
+
+      within("header") do
+        expect(page).to have_content("Add a Book")
+      end
+      
+      within("header") do
+        expect(page).to_not have_content("Black Friday")
+        expect(page).to_not have_content("Author(s): Alexandre Dumas")
+        expect(page).to_not have_content("Pages: 255")
+        expect(page).to_not have_content("Year Published: 1877")
       end
 
     end

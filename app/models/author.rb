@@ -1,5 +1,9 @@
 class Author < ApplicationRecord
 
+  before_save do |author|
+    author.name = author.name.downcase.titleize
+  end
+
   validates_presence_of :name
 
   has_many :book_authors
