@@ -10,11 +10,11 @@
         <%= "selected='selected'" unless @sort %>>
         Select
       </option>
-      <option value="<%= @user.id %>?sort=date-desc" 
+      <option value="<%= @user.id %>?sort=date-desc"
         <%= "selected='selected'" if @sort == "date-desc" %>>
         Newest First
       </option>
-      <option value="<%= @user.id %>?sort=date-asc" 
+      <option value="<%= @user.id %>?sort=date-asc"
         <%= "selected='selected'" if @sort == "date-asc" %>>
         Oldest First
       </option>
@@ -24,7 +24,7 @@
 <main id="user-reviews-container">
   <% @reviews.each do |review| %>
     <article class="review-container">
-      <h3>Book: <%= review.book.title %></h3>
+      <h3>Book: <a href="/books/<%=review.book.id%>"><%= review.book.title %></a></h3>
       <h3>Rating: <%= review.rating %></h3>
       <h3>Title: <%= review.title %></h3>
       <div class="delete-button">
@@ -36,4 +36,3 @@
     </article>
   <% end %>
 </main>
-

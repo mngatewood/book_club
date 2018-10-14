@@ -17,7 +17,7 @@
     <h2>Book Information</h2>
     <ul class="author-book-info">
       <li><span class="li-heading">Average Rating: </span><%=@book.average_rating%> (<%=@book.reviews.count%>)</li>
-      <li><span class="li-heading">Author(s): </span><%@book.authors.each do |a| %> <%=a != @book.authors.last ? a.name + ",": a.name%>  <%end%></li>
+      <li><span class="li-heading">Author(s): </span><%@book.authors.each do |a| %> <a href="../authors/<%=a.id%>"><%=a != @book.authors.last ? a.name + ",": a.name%></a>  <%end%></li>
       <li><span class="li-heading">Pages: </span><%=@book.page_count%></li>
       <li><span class="li-heading">Year Published: </span><%=@book.year_published%> </li>
     </ul>
@@ -26,7 +26,7 @@
     <h2>Top Reviews</h2>
     <ul id="top-reviews">
       <% @book.top_three_reviews.each do |r|%>
-      <li> <%="#{r.title}, #{r.rating}, #{r.user.name}"%> </li>
+      <li> <%="#{r.title}, #{r.rating}, "%> <a href="../users/<%=r.user.id%>"><%="#{r.user.name}"%></a> </li>
       <%end%>
     </ul>
   </div>
@@ -34,7 +34,7 @@
     <h2>Worst Reviews</h2>
     <ul id="bottom-reviews">
       <% @book.bottom_three_reviews.each do |r|%>
-      <li> <%="#{r.title}, #{r.rating}, #{r.user.name}"%> </li>
+      <li> <%="#{r.title}, #{r.rating}, "%> <a href="../users/<%=r.user.id%>"><%="#{r.user.name}"%></a> </li>
       <%end%>
     </ul>
   </div>
@@ -43,7 +43,7 @@
   <h2>All Reviews for <%=@book.title%></h2>
   <% @reviews.each do |review| %>
     <article id="review-container-<%= review.id %>" class="review-container">
-      <h3>Title: <%= review.title %> <span class="reviewed-by"> reviewed by <%=review.user.name%></span></h3>
+      <h3>Title: <%= review.title %> <span class="reviewed-by"> reviewed by <a href="../users/<%=review.user.id%>"><%=review.user.name%></span></a></h3>
       <h3>Rating: <%= review.rating %></h3>
       <h3>Review:</h3>
       <p class="review-text"><%= review.review %></p>

@@ -14,7 +14,7 @@
     <h2>Lowest Rated Books</h2>
     <ul>
       <% @bottom_three_books.each do |b| %>
-      <li><%= b.title %></li>
+      <li><a href="books/<%=b.id%>"><%= b.title %></a></li>
       <% end %>
     </ul>
   </div>
@@ -22,7 +22,7 @@
     <h2>Users with Most Reviews</h2>
     <ul>
       <% @top_users.each do |u| %>
-        <li><%= u.name %></li>
+        <li><a href="users/<%=u.id%>"><%= u.name %></a></li>
       <% end %>
     </ul>
   </div>
@@ -66,10 +66,10 @@
 <main class="books-container">
   <% @books.each do |book| %>
     <article id="<%= "book-container-#{book.id}" %>" class="book-container">
-      <h2><%=book.title%></h2>
+      <h2><a href="books/<%=book.id%>"><%=book.title%></a></h2>
       <li><span class="li-heading">Rating: </span><%=book.average_rating%> (<%=book.reviews.count%>)</li>
       <li><span class="li-heading">Author(s): </span><%book.authors.each do |a| %>
-        <span><%=a != book.authors.last ? a.name + ",": a.name%></span>
+        <span><a href="authors/<%=a.id%>"><%=a != book.authors.last ? a.name + ",": a.name%></a></span>
       <%end%>
       </li>
       <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
