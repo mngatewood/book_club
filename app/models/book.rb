@@ -1,5 +1,9 @@
 class Book < ApplicationRecord
 
+  before_save do |book|
+    book.title = book.title.downcase.titleize
+  end
+
   validates_presence_of :title, :page_count, :year_published
 
   has_many :reviews
