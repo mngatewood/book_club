@@ -1,7 +1,7 @@
 class Author < ApplicationRecord
 
   before_validation do |author|
-    author.name = author.name.downcase.titleize
+    author.name = author.name.downcase.titleize if attribute_present? 'name'
   end
 
   validates_presence_of :name

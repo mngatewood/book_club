@@ -34,15 +34,18 @@ describe "As a vistitor" do
     it 'should create a new book and redirect to the book show page' do
 
       visit "/books/new"
-      
+
       page.fill_in 'Title', with: 'killing road'
       page.fill_in 'Author', with: 'dave mustaine'
       page.fill_in 'Number of Pages', with: '176'
       page.fill_in 'Year Published', with: '2009'
       click_button("Create Book")
-
-      within("#book-heading") do
+      
+      within("header") do
         expect(page).to have_content("Killing Road")
+      end
+
+      within("section") do
         expect(page).to have_content("Author(s): Dave Mustaine")
         expect(page).to have_content("Pages: 176")
         expect(page).to have_content("Year Published: 2009")
@@ -58,6 +61,9 @@ describe "As a vistitor" do
 
       within("header") do
         expect(page).to have_content("Dragon Prince")
+      end
+
+      within("section") do
         expect(page).to have_content("Author(s): Jane Meadows, Jill Rodgers")
         expect(page).to have_content("Pages: 98")
         expect(page).to have_content("Year Published: 2015")

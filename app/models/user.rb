@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   before_validation do |user|
-    user.name = user.name.downcase.titleize
+    user.name = user.name.downcase.titleize if attribute_present? 'name'
   end
 
   validates_presence_of :name

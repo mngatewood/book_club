@@ -24,7 +24,7 @@ describe "As a vistitor" do
 
       visit "/users/#{@user_1.id}"
 
-      within("header") do
+      within("nav") do
         expect(page).to have_content(@user_1.name)
       end
 
