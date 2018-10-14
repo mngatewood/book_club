@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
 
-  before_save do |review|
+  before_validation do |review|
     review.title = review.title.downcase.titleize
   end
 

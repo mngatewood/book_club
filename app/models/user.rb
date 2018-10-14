@@ -1,10 +1,8 @@
 class User < ApplicationRecord
 
-  before_save do |user|
+  before_validation do |user|
     user.name = user.name.downcase.titleize
   end
-
-
 
   validates_presence_of :name
 
