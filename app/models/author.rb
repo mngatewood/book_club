@@ -1,6 +1,6 @@
 class Author < ApplicationRecord
 
-  before_save do |author|
+  before_validation do |author|
     author.name = author.name.downcase.titleize
   end
 
