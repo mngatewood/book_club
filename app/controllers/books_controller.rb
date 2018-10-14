@@ -54,7 +54,7 @@ class BooksController < ApplicationController
       BookAuthor.add_authors_to_book(book.id, author_ids)
       redirect_to "/books/#{book.id}"
     else
-      render :new
+      redirect_to "/books/new"
     end
   end
 
