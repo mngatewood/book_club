@@ -33,8 +33,8 @@ describe "As a vistitor" do
 
       visit "/reviews/new?book=#{@book.id}"
 
-      page.fill_in 'User Name', with: 'Bob'
-      page.fill_in 'Review Title', with: 'Not bad'
+      page.fill_in 'User Name', with: 'BOB'
+      page.fill_in 'Review Title', with: 'not bad'
       page.fill_in 'Rating', with: '3'
       page.fill_in 'Review', with: 'It was just okay.'
       click_button("Create Review")
@@ -44,7 +44,7 @@ describe "As a vistitor" do
       end
 
       within "article.review-container:last-child" do
-        expect(page).to have_content("Title: Not bad - reviewed by Bob")
+        expect(page).to have_content("Title: Not Bad - reviewed by Bob")
         expect(page).to have_content("Rating: 3")
         expect(page).to have_content("It was just okay")
       end

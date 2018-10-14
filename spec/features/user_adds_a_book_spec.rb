@@ -31,11 +31,13 @@ describe "As a vistitor" do
 
       visit "/books/new"
       
-      page.fill_in 'Title', with: 'Killing Road'
-      page.fill_in 'Author', with: 'Dave Mustaine'
+      page.fill_in 'Title', with: 'killing road'
+      page.fill_in 'Author', with: 'dave mustaine'
       page.fill_in 'Number of Pages', with: '176'
       page.fill_in 'Year Published', with: '2009'
       click_button("Create Book")
+
+      save_and_open_page
 
       within("#book-heading") do
         expect(page).to have_content("Killing Road")
@@ -46,8 +48,8 @@ describe "As a vistitor" do
 
       visit "/books/new"
 
-      page.fill_in 'Title', with: 'Dragon Prince'
-      page.fill_in 'Author(s)', with: 'Jane Meadows, Jill Rodgers'
+      page.fill_in 'Title', with: 'DRAGON PRINCE'
+      page.fill_in 'Author(s)', with: 'JANE MEADOWS, JILL RODGERS'
       page.fill_in 'Number of Pages', with: '98'
       page.fill_in 'Year Published', with: '2015'
       click_button("Create Book")
