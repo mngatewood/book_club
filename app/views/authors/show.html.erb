@@ -21,9 +21,8 @@
         </ul>
       </div>
       <div class="author-book-top-review">
-        <h3>Review from <%= book.top_review.user.name %></h3>
-        <h3>Rating: <%= book.top_review.rating %></h3>
-        <h3><%= book.top_review.title %></h3>
+        <h3><%= book.top_review.user.name %> gave it <%= book.top_review.rating %> stars</h3>
+        <h2><%= book.top_review.title %></h2>
         <p><%= book.top_review.review %></p>
       </div>
     </article>

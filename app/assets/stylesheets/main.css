@@ -9,6 +9,7 @@ h3{
 #author-books-container{
   background-color: green;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
 }
 
 #author-book-title{
