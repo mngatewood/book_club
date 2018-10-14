@@ -14,3 +14,19 @@ h3{
 #author-book-title{
 
 }
+
+.author-book-info{
+  display:flex;
+  justify-content: space-around;
+}
+
+.delete-button{
+  position:absolute;
+  top: 20px;
+  right:20px;
+}
+
+.author-book-info-book-title{
+  display: flex;
+  justify-content: center;
+}

@@ -5,18 +5,20 @@
   </div>
 </header>
 <main id="author-books-container">
-  <h2>All Books</h2>
+  <h2>All Books by <%= @author.name%></h2>
   <% @books.each do |book| %>
     <article>
-      <div class="author-book-info">
-        <h3>Title: <%= book.title %></h3>
-        <h3>Average Rating: <%= book.average_rating %></h3>
-        <h3>Other Authors: <% book.other_authors(@author.id).each do |author| %>
-          <span><%= author %></span>
-          <% end %>
-        </h3>
-        <h3><%= book.page_count %> pages</h3>
-        <h3>Published in <%= book.year_published %></h3>
+      <h2 class="author-book-info-book-title"> Title: <%= book.title %></h2>
+      <div >
+        <ul class="author-book-info">
+          <li>Average Rating: <%= book.average_rating %></li>
+          <li>Other Authors: <% book.other_authors(@author.id).each do |author| %>
+            <span><%= author %></span>
+            <% end %>
+          </li>
+          <li><%= book.page_count %> pages</li>
+          <li>Published in <%= book.year_published %></li>
+        </ul>
       </div>
       <div class="author-book-top-review">
         <h3>Review from <%= book.top_review.user.name %></h3>
