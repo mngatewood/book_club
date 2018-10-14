@@ -11,13 +11,13 @@
       <h2 class="author-book-info-book-title"> Title: <%= book.title %></h2>
       <div >
         <ul class="author-book-info">
-          <li>Average Rating: <%= book.average_rating %></li>
-          <li>Other Authors: <% book.other_authors(@author.id).each do |author| %>
+          <li><span class="li-heading">Average Rating: </span><%= book.average_rating %></li>
+          <li><span class="li-heading">Other Authors: </span><% book.other_authors(@author.id).each do |author| %>
             <span><%= author %></span>
             <% end %>
           </li>
-          <li><%= book.page_count %> pages</li>
-          <li>Published in <%= book.year_published %></li>
+          <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
+          <li><span class="li-heading">Published: </span><%= book.year_published %></li>
         </ul>
       </div>
       <div class="author-book-top-review">

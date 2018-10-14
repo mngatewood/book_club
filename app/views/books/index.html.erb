@@ -1,6 +1,5 @@
 <header>
-  <h1> All Books </h1>
-  <input type="button" onclick="location ='books/new';" value="Add a Book" />
+  <input class="add-button" type="button" onclick="location ='books/new';" value="Add a Book" />
 </header>
 <section id="books-stats">
   <div class="stats-container">
@@ -29,6 +28,7 @@
   </div>
 </section>
 <nav>
+  <h1> All Books </h1>
   <form>
     <h3>Sort by: </h3>
     <select id="sort-books" onchange="location = this.value;">
@@ -66,13 +66,14 @@
 <main class="books-container">
   <% @books.each do |book| %>
     <article id="<%= "book-container-#{book.id}" %>" class="book-container">
-      <h2><%=book.title%> Rating: <%=book.average_rating%> (<%=book.reviews.count%>)</h2>
-      <li>Author:  <%book.authors.each do |a| %>
+      <h2><%=book.title%></h2>
+      <li><span class="li-heading">Rating: </span><%=book.average_rating%> (<%=book.reviews.count%>)</li>
+      <li><span class="li-heading">Author: </span><%book.authors.each do |a| %>
         <span><%= a.name %></span>
       <%end%>
       </li>
-      <li>Page Count: <%= book.page_count %></li>
-      <li>Year Published: <%= book.year_published %></li>
+      <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
+      <li><span class="li-heading">Year Published: </span><%= book.year_published %></li>
     </article>
   <% end %>
 </main>

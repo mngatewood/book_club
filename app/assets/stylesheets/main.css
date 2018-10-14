@@ -1,14 +1,32 @@
-h3{
-  font-weight:normal;
+body {
+  background-color: lightgoldenrodyellow; 
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 24px;
+}
+
+li {
+  margin: 10px;
+}
+
+ul {
+  padding-left: 16px;
 }
 
 #author-heading{
-  background-color: green;
+
+}
+
+.li-heading {
+  font-weight:bold
+}
+
+.reviewed-by {
+  font-weight: normal;
+  font-size: 16px;
 }
 
 #author-books-container{
-  background-color: green;
-  font-family: Arial, Helvetica, sans-serif;
+
   padding: 20px;
 }
 
@@ -16,18 +34,96 @@ h3{
 
 }
 
-.author-book-info{
-  display:flex;
-  justify-content: space-around;
+.delete-button input,
+.add-button input {
+  width: 100px;
 }
 
-.delete-button{
+.delete-button, .add-button {
   position:absolute;
-  top: 20px;
-  right:20px;
+  top: 50px;
+  right:30px;
+}
+
+#add-review-button {
+  top: 80px;
+  width: 100px;
 }
 
 .author-book-info-book-title{
   display: flex;
   justify-content: center;
 }
+
+#books-stats, #book-stats{
+  display: flex;
+  justify-content: space-around
+}
+
+nav, .book-title  {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav h1 {
+  font-size: 30px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+select {
+  margin-left: 16px;
+}
+
+main.books-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.books-container .book-container {
+  width: 400px;
+  padding: 0 18px;
+}
+
+.book-container h2 {
+  margin-bottom: 10px;
+  margin-top: 36px;
+}
+
+hr {
+  margin:30px 0;
+}
+
+label {
+  display: block;
+}
+
+#new_review input, 
+#new_book input,
+textarea {
+  display: block;
+  margin-bottom: 18px;
+  width: 300px;
+}
+
+form.new_review,
+form.new_book {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+textarea {
+  height: 80px;
+}
+
+#new_review input[type="submit"],
+#new_book input[type="submit"] {
+  width: unset;
+}
+

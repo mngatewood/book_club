@@ -1,7 +1,7 @@
 <header id="user-heading">
-  <h1><%= @user.name %></h1>
 </header>
 <nav>
+  <h1>All Reviews by <%= @user.name %></h1>
   <form>
     <h3>Sort by: </h3>
     <select id="sort-books" onchange="location = this.value;">
@@ -24,13 +24,15 @@
 <main id="user-reviews-container">
   <% @reviews.each do |review| %>
     <article class="review-container">
-      <h3>Title: <%= review.title %></h3>
+      <h3>Book: <%= review.book.title %></h3>
       <h3>Rating: <%= review.rating %></h3>
+      <h3>Title: <%= review.title %></h3>
       <div class="delete-button">
         <%= button_to 'Delete Review', review, :method => 'delete' %>
       </div>
       <h3>Review:</h3>
       <p><%= review.review %></p>
+      <hr>
     </article>
   <% end %>
 </main>

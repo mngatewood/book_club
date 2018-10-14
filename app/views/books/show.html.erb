@@ -1,21 +1,27 @@
 <header id="book-heading">
-  <h1>
-    <%=@book.title%> - Average Rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)
-  </h1>
+    <h1>
+      <%=@book.title%>
+    </h1>
   <input 
+    class="add-button"
+    id="add-review-button"
     type="button" 
-    onclick="location ='reviews/new?book=<%= @book.id %>';" 
+    onclick="location.href ='/reviews/new?book=<%= @book.id %>';" 
     value="Add a Review" />
   <div class="delete-button">
     <%= button_to 'Delete Book', @book, :method => 'delete' %>
   </div>
-  <ul>
-    <li>Author(s): <%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
-    <li>Pages: <%=@book.page_count%></li>
-    <li>Year Published: <%=@book.year_published%> </li>
-  </ul>
 </header>
 <section id="book-stats">
+  <div class="stats-container">
+    <h2>Book Information</h2>
+    <ul class="author-book-info">
+      <li><span class="li-heading">Average Rating: </span><%=@book.average_rating%> (<%=@book.reviews.count%>)</li>
+      <li><span class="li-heading">Author(s): </span><%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
+      <li><span class="li-heading">Pages: </span><%=@book.page_count%></li>
+      <li><span class="li-heading">Year Published: </span><%=@book.year_published%> </li>
+    </ul>
+  </div>
   <div class="stats-container">
     <h2>Top Reviews</h2>
     <ul id="top-reviews">
@@ -37,10 +43,11 @@
   <h2>All Reviews for <%=@book.title%></h2>
   <% @reviews.each do |review| %>
     <article id="review-container-<%= review.id %>" class="review-container">
-      <h3>Title: <%= review.title %> - reviewed by <%=review.user.name%></h3>
+      <h3>Title: <%= review.title %> <span class="reviewed-by"> reviewed by <%=review.user.name%></span></h3>
       <h3>Rating: <%= review.rating %></h3>
       <h3>Review:</h3>
-      <p><%= review.review %></p>
+      <p class="review-text"><%= review.review %></p>
+      <hr>
     </article>
   <% end %>
 </main>
