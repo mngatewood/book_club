@@ -29,9 +29,7 @@ describe "As a vistitor" do
 
       visit '/books'
 
-
-
-      within(".books-container") do
+      within("main") do
         expect(page).to have_css("h2", :text => @book_1.title)
         expect(page).to have_css("h2", :text => @book_2.title)
         expect(page).to have_css("h2", :text => @book_3.title)

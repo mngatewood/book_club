@@ -1,8 +1,14 @@
-<header id="book-header">
-  <h1><%=@book.title%> - rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)</h1>
-  <p id="delete-book-link">
-    <%= link_to 'Delete Book', @book, :method => 'delete' %>
-  </p>
+<header id="book-heading">
+  <h1>
+    <%=@book.title%> - Average Rating: <%=@book.average_rating%> (<%=@book.reviews.count%>)
+  </h1>
+  <input 
+    type="button" 
+    onclick="location ='reviews/new?book=<%= @book.id %>';" 
+    value="Add a Review" />
+  <div class="delete-button">
+    <%= button_to 'Delete Book', @book, :method => 'delete' %>
+  </div>
   <ul>
     <li>Author(s): <%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
     <li>Pages: <%=@book.page_count%></li>
