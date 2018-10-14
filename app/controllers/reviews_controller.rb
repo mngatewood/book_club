@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to "/books/#{review.book_id}"
     else
-      render :new
+      redirect_to "/reviews/new?book=#{review_params[:book_id]}"
     end
   end
 
