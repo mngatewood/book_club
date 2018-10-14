@@ -8,7 +8,7 @@
   <h2>All Books by <%= @author.name%></h2>
   <% @books.each do |book| %>
     <article>
-      <h2 class="author-book-info-book-title"> Title: <%= book.title %></h2>
+      <h2 class="author-book-info-book-title"> Title: <a href="/books/<%=book.id%>"><%= book.title %></a></h2>
       <div >
         <ul class="author-book-info">
           <li><span class="li-heading">Average Rating: </span><%= book.average_rating %></li>
@@ -21,7 +21,7 @@
         </ul>
       </div>
       <div class="author-book-top-review">
-        <h3><%= book.top_review.user.name %> gave it <%= book.top_review.rating %> stars</h3>
+        <h3><a href="/users/<%=book.top_review.user.id%>"><%= book.top_review.user.name %></a> gave it <%= book.top_review.rating %> stars</h3>
         <h2><%= book.top_review.title %></h2>
         <p><%= book.top_review.review %></p>
       </div>
