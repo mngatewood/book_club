@@ -12,8 +12,8 @@
       <div >
         <ul class="author-book-info">
           <li><span class="li-heading">Average Rating: </span><%= book.average_rating %></li>
-          <li><span class="li-heading">Other Authors: </span><% book.other_authors(@author.id).each do |author| %>
-            <span><%= author %></span>
+          <li><span class="li-heading">Other Authors: </span><% book.other_authors(@author.id).each do |a| %>
+            <span><%=a != book.other_authors(@author.id).last ? a + ",": a%></span>
             <% end %>
           </li>
           <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>

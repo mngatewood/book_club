@@ -6,7 +6,7 @@
     <h2>Highest Rated Books</h2>
     <ul>
       <% @top_three_books.each do |b| %>
-      <li><%= b.title %></li>
+      <li><a href="/books/<%=b.id%>"><%= b.title %></a></li>
       <% end %>
     </ul>
   </div>
@@ -23,7 +23,7 @@
     <ul>
       <% @top_users.each do |u| %>
         <li><%= u.name %></li>
-      <% end %>  
+      <% end %>
     </ul>
   </div>
 </section>
@@ -37,26 +37,26 @@
         <%= "selected='selected'" unless @sort %>>
         Select
       </option>
-      <option value="books?sort=rating-desc" 
+      <option value="books?sort=rating-desc"
         <%= "selected='selected'" if @sort == "rating-desc" %>>
         Highest to Lowest Rating
       </option>
-      <option value="books?sort=rating-asc" 
+      <option value="books?sort=rating-asc"
         <%= "selected='selected'" if @sort == "rating-asc" %>>
         Lowest to Highest Rating
       </option>
-      <option value="books?sort=reviews-desc" 
+      <option value="books?sort=reviews-desc"
         <%= "selected='selected'" if @sort == "reviews-desc" %>>
         Most to Least Reviews
       </option>
-      <option value="books?sort=reviews-asc" 
+      <option value="books?sort=reviews-asc"
         <%= "selected='selected'" if @sort == "reviews-asc" %>>
         Least to Most Reviews
         </option>
-      <option value="books?sort=pages-desc" 
+      <option value="books?sort=pages-desc"
         <%= "selected='selected'" if @sort == "pages-desc" %>>
         Most to Least Pages</option>
-      <option value="books?sort=pages-asc" 
+      <option value="books?sort=pages-asc"
         <%= "selected='selected'" if @sort == "pages-asc" %>>
         Least to Most Pages
       </option>
@@ -68,8 +68,8 @@
     <article id="<%= "book-container-#{book.id}" %>" class="book-container">
       <h2><%=book.title%></h2>
       <li><span class="li-heading">Rating: </span><%=book.average_rating%> (<%=book.reviews.count%>)</li>
-      <li><span class="li-heading">Author: </span><%book.authors.each do |a| %>
-        <span><%= a.name %></span>
+      <li><span class="li-heading">Author(s): </span><%book.authors.each do |a| %>
+        <span><%=a != book.authors.last ? a.name + ",": a.name%></span>
       <%end%>
       </li>
       <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
