@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
 
   before_validation do |book|
-    book.title = book.title.downcase.titleize
+    book.title = book.title.downcase.titleize if attribute_present? 'title'
   end
 
   validates_presence_of :title, :page_count, :year_published
