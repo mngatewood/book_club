@@ -1,9 +1,29 @@
 <header id="user-heading">
   <h1><%= @user.name %></h1>
 </header>
+<nav>
+  <form>
+    <h3>Sort by: </h3>
+    <select id="sort-books" onchange="location = this.value;">
+      <option
+        value="<%= @user.id %>"
+        <%= "selected='selected'" unless @sort %>>
+        Select
+      </option>
+      <option value="<%= @user.id %>?sort=date-desc" 
+        <%= "selected='selected'" if @sort == "date-desc" %>>
+        Newest First
+      </option>
+      <option value="<%= @user.id %>?sort=date-asc" 
+        <%= "selected='selected'" if @sort == "date-asc" %>>
+        Oldest First
+      </option>
+    </select>
+  </form>
+</nav>
 <main id="user-reviews-container">
   <% @reviews.each do |review| %>
-    <article>
+    <article class="review-container">
       <h3>Title: <%= review.title %></h3>
       <h3>Rating: <%= review.rating %></h3>
       <div class="delete-button">
