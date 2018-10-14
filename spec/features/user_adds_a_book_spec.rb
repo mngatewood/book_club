@@ -75,8 +75,6 @@ describe "As a vistitor" do
       page.fill_in 'Year Published', with: '2009'
       click_button("Create Book")
 
-      save_and_open_page
-
       within("header") do
         expect(page).to have_content("Add a Book")
       end
