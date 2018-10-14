@@ -2,11 +2,11 @@
     <h1>
       <%=@book.title%>
     </h1>
-  <input 
+  <input
     class="add-button"
     id="add-review-button"
-    type="button" 
-    onclick="location.href ='/reviews/new?book=<%= @book.id %>';" 
+    type="button"
+    onclick="location.href ='/reviews/new?book=<%= @book.id %>';"
     value="Add a Review" />
   <div class="delete-button">
     <%= button_to 'Delete Book', @book, :method => 'delete' %>
@@ -17,7 +17,7 @@
     <h2>Book Information</h2>
     <ul class="author-book-info">
       <li><span class="li-heading">Average Rating: </span><%=@book.average_rating%> (<%=@book.reviews.count%>)</li>
-      <li><span class="li-heading">Author(s): </span><%@book.authors.each do |a| %> <%=a.name%>, <%end%></li>
+      <li><span class="li-heading">Author(s): </span><%@book.authors.each do |a| %> <%=a != @book.authors.last ? a.name + ",": a.name%>  <%end%></li>
       <li><span class="li-heading">Pages: </span><%=@book.page_count%></li>
       <li><span class="li-heading">Year Published: </span><%=@book.year_published%> </li>
     </ul>
