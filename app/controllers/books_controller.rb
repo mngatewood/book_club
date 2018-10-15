@@ -46,7 +46,7 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  def create    
+  def create
     author_names = book_params[:author_names].split(",")
     author_ids = Author.get_ids_from_names(author_names)
     book = Book.new(book_params)
