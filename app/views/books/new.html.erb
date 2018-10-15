@@ -2,7 +2,7 @@
   <h1>Add a Book</h1>
 </header>
 <main>
-  <%= form_for Book.new do |f| %>
+  <%= form_for @book do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :author_names, "Author(s)" %>
