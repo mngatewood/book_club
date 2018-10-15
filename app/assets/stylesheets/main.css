@@ -31,6 +31,10 @@ body {
   flex-grow: 1;
 }
 
+.book-container {
+  min-width: 300px;
+}
+
 li {
   margin: 10px;
 }
