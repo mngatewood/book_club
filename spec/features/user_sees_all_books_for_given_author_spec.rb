@@ -34,10 +34,10 @@ describe "As a vistitor" do
       end
 
       within("main") do
-        expect(page).to have_content("Title: #{@book_1.title}")
-        expect(page).to have_content("Title: #{@book_2.title}")
-        expect(page).to_not have_content("Title: #{@book_3.title}")
-        expect(page).to_not have_content("Title: #{@book_4.title}")
+        expect(page).to have_content(@book_1.title)
+        expect(page).to have_content(@book_2.title)
+        expect(page).to_not have_content(@book_3.title)
+        expect(page).to_not have_content(@book_4.title)
         expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
         expect(page).to have_content("Average Rating: #{@book_2.average_rating}")
         expect(page).to_not have_content("Average Rating: #{@book_3.average_rating}")
