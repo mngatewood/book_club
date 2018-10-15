@@ -3,7 +3,7 @@
   <h2>Book Title: <%= @book.title %></h2>
 </header>
 <main>
-  <%= form_for @review do |f| %>
+  <%= form_for [@book,@review] do |f| %>
     <%= f.label :username, "User Name" %>
     <%= f.text_field :username %>
     <%= f.label :title, "Review Title" %>
@@ -12,7 +12,6 @@
     <%= f.number_field :rating %>
     <%= f.label :review %>
     <%= f.text_area :review %>
-    <%= f.hidden_field :book_id, :value => @book.id %>
     <%= f.submit  %>
   <%end%>
 </main>
