@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   def new
+    # require 'pry'; binding.pry 
     @book = Book.find(params[:book])
     @review = Review.new
   end
