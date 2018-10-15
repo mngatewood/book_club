@@ -20,7 +20,7 @@ describe "As a vistitor" do
       end
 
       within("main") do
-        expect(page).to have_content("Title: #{@book.title}")
+        expect(page).to have_content(@book.title)
         expect(page).to have_content("Page Count: #{@book.page_count}")
         expect(page).to have_content("Published: #{@book.year_published}")
       end

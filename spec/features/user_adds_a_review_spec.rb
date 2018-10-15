@@ -44,7 +44,7 @@ describe "As a vistitor" do
       end
 
       within "article.review-container:last-child" do
-        expect(page).to have_content("Title: Not Bad reviewed by Bob")
+        expect(page).to have_content("Not Bad reviewed by Bob")
         expect(page).to have_content("Rating: 3")
         expect(page).to have_content("It was just okay")
       end
@@ -69,7 +69,7 @@ describe "As a vistitor" do
       end
 
       within "body" do
-        expect(page).to_not have_content("Title: Not Bad reviewed by Bob")
+        expect(page).to_not have_content("Not Bad reviewed by Bob")
         expect(page).to_not have_content("Rating: 3")
         expect(page).to_not have_content("It was just okay")
       end

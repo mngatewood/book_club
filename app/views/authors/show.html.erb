@@ -1,29 +1,35 @@
 <header id="author-heading">
-  <h1><%= @author.name %></h1>
+  <h1>All Books by <%= @author.name %></h1>
   <div class="delete-button">
     <%= button_to 'Delete Author', @author, :method => 'delete' %>
   </div>
 </header>
 <main id="author-books-container">
-  <h2>All Books by <%= @author.name%></h2>
   <% @books.each do |book| %>
-    <article>
-      <h2 class="author-book-info-book-title"> Title: <a href="/books/<%=book.id%>"><%= book.title %></a></h2>
-      <div >
-        <ul class="author-book-info">
-          <li><span class="li-heading">Average Rating: </span><%= book.average_rating %></li>
-          <li><span class="li-heading">Other Authors: </span><% book.other_authors(@author.id).each do |a| %>
-            <span><%=a != book.other_authors(@author.id).last ? a + ",": a%></span>
-            <% end %>
-          </li>
-          <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
-          <li><span class="li-heading">Published: </span><%= book.year_published %></li>
-        </ul>
+    <article class="author-book-container">
+      <div class="author-book-container-sub">
+        <div class="book-image">
+          <img src="<%= book.thumbnail ? book.thumbnail : "http://i.imgur.com/sJ3CT4V.gif" %>" alt="book cover">
+        </div>
+        <div class="author-book-info">
+          <h2 class="author-book-info-book-title"><a href="/books/<%=book.id%>"><%= book.title %></a></h2>
+          <ul class="author-book-info">
+            <li><span class="li-heading">Average Rating: </span><%= book.average_rating %></li>
+            <li><span class="li-heading">Other Authors: </span><% book.other_authors(@author.id).each do |a| %>
+              <span><%=a != book.other_authors(@author.id).last ? a + ",": a%></span>
+              <% end %>
+            </li>
+            <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
+            <li><span class="li-heading">Published: </span><%= book.year_published %></li>
+          </ul>
+          <div class="author-book-top-review-overview">
+            <h3><a href="/users/<%=book.top_review.user.id%>"><%= book.top_review.user.name %></a> gave it <%= book.top_review.rating %> stars.</h3>
+            <h3>Review: <%= book.top_review.title %></h3>
+          </div>
+        </div>
       </div>
       <div class="author-book-top-review">
-        <h3><a href="/users/<%=book.top_review.user.id%>"><%= book.top_review.user.name %></a> gave it <%= book.top_review.rating %> stars</h3>
-        <h2><%= book.top_review.title %></h2>
-        <p><%= book.top_review.review %></p>
+        <p class="review-text"><%= book.top_review.review %></p>
       </div>
     </article>
   <% end %>
