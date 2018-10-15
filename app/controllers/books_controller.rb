@@ -8,11 +8,11 @@ class BooksController < ApplicationController
     elsif @sort == "rating-asc"
       @books = Book.sort_by_average_rating
     elsif @sort == "rating-desc"
-      @books = Book.sort_by_average_rating.reverse
+      @books = Book.sort_by_average_rating.reverse_order
     elsif @sort == "reviews-asc"
       @books = Book.sort_by_ratings_count
     elsif @sort == "reviews-desc"
-      @books = Book.sort_by_ratings_count.reverse
+      @books = Book.sort_by_ratings_count.reverse_order
     else
       @books = Book.all
   end
