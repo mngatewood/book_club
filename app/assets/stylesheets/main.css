@@ -1,19 +1,51 @@
 body {
-  background-color: lightgoldenrodyellow; 
+  background-image: linear-gradient(rgba(135, 206, 255, 0.9), rgba(255, 255, 255, 0.8) ), url("books.jpg");
+  background-color: aliceblue;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
   padding: 24px;
+}
+
+.books-container,
+#book-stats {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.stats-container,
+.book-container {
+  background-color: white;
+  margin: 12px;
+  width: 26%;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 6px 12px 18px lightblue;
+  min-width: 200px;
+  max-width: 400px;
+  flex-basis: auto; /* default value */
+  flex-grow: 1;
 }
 
 li {
   margin: 10px;
 }
 
-ul {
-  padding-left: 16px;
+.book-container li {
+  padding-left: 20px;
+  text-indent: -23px;
 }
 
-#author-heading{
+.book-container a {
+/*   white-space: nowrap; */
+}
 
+ul {
+  padding-left: 16px;
 }
 
 .li-heading {
@@ -26,28 +58,26 @@ ul {
 }
 
 #author-books-container{
-
   padding: 20px;
 }
 
-#author-book-title{
-
-}
-
 .delete-button input,
-.add-button input {
+.add-button input,
+input.add-button,
+#add-review-button {
   width: 100px;
+  box-shadow: 1px 2px 6px gray;
 }
 
-.delete-button, .add-button {
+.delete-button,
+.add-button {
   position:absolute;
   top: 50px;
-  right:30px;
+  right:44px;
 }
 
 #add-review-button {
   top: 80px;
-  width: 100px;
 }
 
 .author-book-info-book-title{
@@ -55,7 +85,8 @@ ul {
   justify-content: center;
 }
 
-#books-stats, #book-stats{
+#books-stats, 
+#book-stats {
   display: flex;
   justify-content: space-around
 }
@@ -63,6 +94,10 @@ ul {
 nav, .book-title  {
   display: flex;
   justify-content: space-between;
+}
+
+h1 {
+  margin-left: 12px;
 }
 
 nav h1 {
@@ -77,22 +112,22 @@ form {
 
 select {
   margin-left: 16px;
-}
-
-main.books-container {
-  display: flex;
-  flex-wrap: wrap;
-
-}
-
-.books-container .book-container {
-  width: 400px;
-  padding: 0 18px;
+  margin-right: 12px;
+  box-shadow: 1px 2px 6px gray;
 }
 
 .book-container h2 {
   margin-bottom: 10px;
-  margin-top: 36px;
+}
+
+.book-container-sub {
+  display: flex;
+}
+
+img {
+  width: 60px;
+  height: 100px;
+  margin: 10px;
 }
 
 hr {
