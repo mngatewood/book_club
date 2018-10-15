@@ -15,9 +15,9 @@ body {
   flex-wrap: wrap;
 }
 
-
 .stats-container,
-.book-container {
+.book-container,
+.review-container {
   background-color: white;
   margin: 12px;
   width: 26%;
@@ -33,6 +33,17 @@ body {
 
 .book-container {
   min-width: 300px;
+}
+
+.review-container {
+  width: calc(100% - 72px);
+  max-width: unset;
+  padding: 12px 24px;
+  margin: 24px 12px;
+}
+
+#book-reviews-container h2 {
+  margin-left: 12px;
 }
 
 li {
@@ -166,3 +177,6 @@ textarea {
   width: unset;
 }
 
+p.review-text {
+  line-height: 24px;
+}
