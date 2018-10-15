@@ -67,13 +67,20 @@
   <% @books.each do |book| %>
     <article id="<%= "book-container-#{book.id}" %>" class="book-container">
       <h2><a href="books/<%=book.id%>"><%=book.title%></a></h2>
-      <li><span class="li-heading">Rating: </span><%=book.average_rating%> (<%=book.reviews.count%>)</li>
-      <li><span class="li-heading">Author(s): </span><%book.authors.each do |a| %>
-        <span><a href="authors/<%=a.id%>"><%=a != book.authors.last ? a.name + ",": a.name%></a></span>
-      <%end%>
-      </li>
-      <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
-      <li><span class="li-heading">Year Published: </span><%= book.year_published %></li>
+      <div class="book-container-sub">
+        <div class="book-image">
+          <img src="<%= book.thumbnail ? book.thumbnail : "http://i.imgur.com/sJ3CT4V.gif" %>" alt="book cover">
+        </div>
+        <div class="book-info">
+          <li><span class="li-heading">Rating: </span><%=book.average_rating%> (<%=book.reviews.count%>)</li>
+          <li><span class="li-heading">Author(s): </span><%book.authors.each do |a| %>
+            <span><a href="authors/<%=a.id%>"><%=a != book.authors.last ? a.name + ",": a.name%></a></span>
+          <%end%>
+          </li>
+          <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
+          <li><span class="li-heading">Year Published: </span><%= book.year_published %></li>
+        </div>
+      </div>
     </article>
   <% end %>
 </main>
