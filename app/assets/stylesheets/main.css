@@ -5,7 +5,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 24px;
+  padding: 12px 24px 24px 24px;
 }
 
 .books-container,
@@ -18,7 +18,9 @@ body {
 .stats-container,
 .book-container,
 .review-container,
-.author-book-container {
+.author-book-container,
+.new-review-container,
+.new-book-container {
   background-color: white;
   margin: 12px;
   width: 26%;
@@ -37,7 +39,9 @@ body {
 }
 
 .review-container,
-.author-book-container {
+.author-book-container,
+.new-review-container, 
+.new-book-container {
   width: calc(100% - 72px);
   max-width: unset;
   padding: 12px 24px;
@@ -49,6 +53,40 @@ body {
   margin-left: 12px; 
 }
 
+.new-review-container {
+  width: calc(100% - 72px);
+}
+
+.new-book-container {
+  width: 440px;
+  padding: 48px 36px 0 36px;
+}
+
+.new-review-container input,
+.new-book-container input,
+.new-review-container textarea {
+  background-color: aliceblue;
+  position: relative;
+  left: 130px;
+  top: -24px;
+  margin-bottom: 18px;
+  width: 300px;
+  height: 24px;
+}
+
+.new-review-container textarea {
+  width: calc(100% - 150px);
+  height: 80px;
+}
+
+.new-review-container input[type="submit"],
+.new-book-container input[type="submit"] {
+  width: 150px;
+  height: 32px;
+  font-size: 18px;
+  margin-top: 36px;
+}
+
 li {
   margin: 10px;
 }
@@ -56,10 +94,6 @@ li {
 .book-container li {
   padding-left: 20px;
   text-indent: -23px;
-}
-
-.book-container a {
-/*   white-space: nowrap; */
 }
 
 ul {
@@ -78,7 +112,11 @@ ul {
 .delete-button input,
 .add-button input,
 input.add-button,
-#add-review-button {
+#add-review-button,
+input[type="submit"],
+select {
+  height: 32px;
+  font-size: 18px;
   width: 100px;
   box-shadow: 1px 2px 6px gray;
 }
@@ -88,6 +126,13 @@ input.add-button,
   position:absolute;
   top: 50px;
   right:44px;
+}
+
+select {
+  width: 250px;
+  margin-left: 16px;
+  margin-right: 12px;
+  box-shadow: 1px 2px 6px gray;
 }
 
 #add-review-button {
@@ -118,12 +163,6 @@ form {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-}
-
-select {
-  margin-left: 16px;
-  margin-right: 12px;
-  box-shadow: 1px 2px 6px gray;
 }
 
 .book-container h2 {
@@ -191,12 +230,8 @@ label {
   display: block;
 }
 
-#new_review input, 
-#new_book input,
-textarea {
-  display: block;
-  margin-bottom: 18px;
-  width: 300px;
+#new_review #review_rating {
+  width: 24px;
 }
 
 form.new_review,
@@ -206,16 +241,8 @@ form.new_book {
   align-items: baseline;
 }
 
-textarea {
-  height: 80px;
-}
-
-#new_review input[type="submit"],
-#new_book input[type="submit"] {
-  width: unset;
-}
-
 p.review-text,
 .author-book-container li {
   line-height: 24px;
 }
+
