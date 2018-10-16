@@ -8,9 +8,9 @@ class ReviewsController < ApplicationController
   def create
     book = Book.find(params[:book_id])
     user_id = User.get_user_id(review_params[:username])
+    user_exists = book.user_review_exists?(user_id)
     review = book.reviews.new(review_params.merge(user_id: user_id))
-    # require 'pry';binding.pry
-    if review.save
+    if review.save && !user_exists
       redirect_to "/books/#{review.book_id}"
     else
       redirect_to "/reviews/new?book=#{review.book_id}"
