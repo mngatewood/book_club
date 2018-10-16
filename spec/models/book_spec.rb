@@ -85,5 +85,10 @@ describe Book, type: :model do
 
       expect(lowest_rated_titles).to eq ([@book_5,@book_1,@book_2])
     end
+
+    it 'return true if user has already submitted review' do
+      expect(@book_1.user_review_exists?(@user_1.id)).to eq (true)
+      expect(@book_1.user_review_exists?(@user_3.id)).to eq (false)
+    end
   end
 end
