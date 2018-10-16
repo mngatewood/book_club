@@ -16,21 +16,25 @@
           <ul class="author-book-info">
             <li><span class="li-heading">Average Rating: </span><%= book.average_rating %></li>
             <li><span class="li-heading">Other Authors: </span><% book.other_authors(@author.id).each do |a| %>
-              <span><%=a != book.other_authors(@author.id).last ? a + ",": a%></span>
+              <span><%= a != book.other_authors(@author.id).last ? a + ",": a %></span>
               <% end %>
             </li>
             <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
             <li><span class="li-heading">Published: </span><%= book.year_published %></li>
           </ul>
-          <div class="author-book-top-review-overview">
-            <h3><a href="/users/<%=book.top_review.user.id%>"><%= book.top_review.user.name %></a> gave it <%= book.top_review.rating %> stars.</h3>
-            <h3>Review: <%= book.top_review.title %></h3>
-          </div>
+          <% if book.top_review %>
+            <div class="author-book-top-review-overview">
+              <h3><a href="/users/<%= book.top_review.user.id %>"><%= book.top_review.user.name %></a> gave it <%= book.top_review.rating %> stars.</h3>
+              <h3>Review: <%= book.top_review.title %></h3>
+            </div>
+          <% end %>
         </div>
       </div>
-      <div class="author-book-top-review">
-        <p class="review-text"><%= book.top_review.review %></p>
-      </div>
+      <% if book.top_review %>
+        <div class="author-book-top-review">
+          <p class="review-text"><%= book.top_review.review %></p>
+        </div>
+      <% end %>
     </article>
   <% end %>
 </main>
