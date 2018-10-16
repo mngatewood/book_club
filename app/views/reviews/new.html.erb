@@ -9,7 +9,7 @@
       <%= f.label :title, "Review Title" %>
       <%= f.text_field :title %>
       <%= f.label :rating %>
-      <%= f.number_field :rating %>
+      <%= f.number_field :rating, min: 1, max: 5 %>
       <%= f.label :review %>
       <%= f.text_area :review %>
     <%= f.submit  %>
