@@ -25,7 +25,7 @@ describe "As a vistitor" do
 
   describe "When I visit books show page" do
 
-    it 'should see a book' do
+    it 'should show a book' do
       visit "/books/#{@book_1.id}"
 
       within("nav") do

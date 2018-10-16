@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "As a vistitor" do
 
     before(:each) do
-
       @user_1 = User.create(name: "John")
       @user_2 = User.create(name: "Jane")
       @user_3 = User.create(name: "David")
@@ -25,7 +24,7 @@ describe "As a vistitor" do
 
   describe "When I visit author show page" do
 
-    it 'should see all books for the given author' do
+    it 'should show all books for the given author' do
 
       visit "/authors/#{@author_1.id}"
 
@@ -38,6 +37,15 @@ describe "As a vistitor" do
         expect(page).to have_content(@book_2.title)
         expect(page).to_not have_content(@book_3.title)
         expect(page).to_not have_content(@book_4.title)
+      end
+
+    end
+
+    it 'should show summary information for each book' do
+
+      visit "/authors/#{@author_1.id}"
+
+      within("main") do
         expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
         expect(page).to have_content("Average Rating: #{@book_2.average_rating}")
         expect(page).to_not have_content("Average Rating: #{@book_3.average_rating}")
@@ -50,6 +58,15 @@ describe "As a vistitor" do
         expect(page).to have_content("Page Count: #{@book_2.page_count}")
         expect(page).to have_content("Published: #{@book_1.year_published}")
         expect(page).to have_content("Published: #{@book_2.year_published}")
+      end
+
+    end
+
+    it 'should show the top review for each book' do
+
+      visit "/authors/#{@author_1.id}"
+
+      within("main") do
         expect(page).to have_content("#{@user_1.name} gave it")
         expect(page).to have_content("#{@user_2.name} gave it")
         expect(page).to_not have_content("#{@user_3.name} gave it")
@@ -66,6 +83,7 @@ describe "As a vistitor" do
         expect(page).to_not have_content(@review_1.review)
         expect(page).to_not have_content(@review_3.review)
       end
+
     end
   end
 end
