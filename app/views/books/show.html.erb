@@ -19,19 +19,31 @@
   <div class="stats-container">
     <h2>Book Information</h2>
     <ul class="author-book-info">
-      <li><span class="li-heading">Average Rating: </span><%=@book.average_rating%> (<%=@book.reviews.count%>)</li>
-      <li><span class="li-heading">Author(s): </span><%@book.authors.each do |a| %> <a href="../authors/<%=a.id%>"><%=a != @book.authors.last ? a.name + ",": a.name%></a>  <%end%></li>
-      <li><span class="li-heading">Pages: </span><%=@book.page_count%></li>
-      <li><span class="li-heading">Year Published: </span><%=@book.year_published%> </li>
+      <li><span class="li-heading">Average Rating: </span>
+        <%= @book.average_rating %> (<%= @book.reviews.count %>)
+      </li>
+      <li><span class="li-heading">Author(s): </span>
+        <% @book.authors.each do |a| %> 
+          <a href="../authors/<%=a.id%>">
+            <%= a != @book.authors.last ? a.name + ",": a.name %>
+          </a>
+        <% end %>
+      </li>
+      <li><span class="li-heading">Pages: </span>
+        <%=@book.page_count%>
+      </li>
+      <li><span class="li-heading">Year Published: </span>
+        <%=@book.year_published%>
+      </li>
     </ul>
   </div>
   <div class="stats-container">
     <h2>Top Reviews</h2>
     <ul id="top-reviews">
-      <% @book.top_three_reviews.each do |r|%>
+      <% @top_three_reviews.each do |r|%>
       <li>
         <span class="li-heading"><%= r.title %></span><br>
-        <%= "Rated #{r.rating} by "%> <a href="../users/<%=r.user.id%>"><%="#{r.user.name}"%></a>
+        <%= "Rated #{r.rating} by "%> <a href="../users/<%= r.user.id %>"><%= "#{r.user.name}" %></a>
       </li>
       <%end%>
     </ul>
@@ -39,7 +51,7 @@
   <div class="stats-container">
     <h2>Worst Reviews</h2>
     <ul id="bottom-reviews">
-      <% @book.bottom_three_reviews.each do |r|%>
+      <% @bottom_three_reviews.each do |r| %>
       <li>
         <span class="li-heading"><%= r.title %></span><br>
         <%= "Rated #{r.rating} by "%> <a href="../users/<%=r.user.id%>"><%="#{r.user.name}"%></a>

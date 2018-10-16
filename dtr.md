@@ -35,8 +35,7 @@ We will retro daily to resolve obstacles and challenges.  Prior to breaking into
 
 ## Workload Expectations (What features do we each want to work on?):
 
-* Michael: TBD
-* Quinn: TBD
+* Both partners share the load
 
 ## Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
 * Use branches appropriately and never push to master branch

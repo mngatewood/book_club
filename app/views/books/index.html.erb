@@ -72,9 +72,9 @@
           <img src="<%= book.thumbnail ? book.thumbnail : "http://i.imgur.com/sJ3CT4V.gif" %>" alt="book cover">
         </div>
         <div class="book-info">
-          <li><span class="li-heading">Rating: </span><%=book.average_rating%> (<%=book.reviews.count%>)</li>
+          <li><span class="li-heading">Rating: </span><%= book.average_rating %> (<%= book.reviews.count %>)</li>
           <li><span class="li-heading">Author(s): </span><%book.authors.each do |a| %>
-            <span><a href="authors/<%=a.id%>"><%=a != book.authors.last ? a.name + ",": a.name%></a></span>
+            <span><a href="authors/<%= a.id %>"><%= a != book.authors.last ? a.name + ",": a.name %></a></span>
           <%end%>
           </li>
           <li><span class="li-heading">Page Count: </span><%= book.page_count %></li>
