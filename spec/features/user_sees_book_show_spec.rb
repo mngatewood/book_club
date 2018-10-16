@@ -7,7 +7,7 @@ describe "As a vistitor" do
     @user_1 = User.create(name: "John")
     @user_2 = User.create(name: "Jane")
     @user_3 = User.create(name: "David")
-    @book_1 = Book.create(title: "Black Beauty", page_count: 255, year_published: 1877)
+    @book_1 = Book.create(title: "Black Beauty", page_count: 255, year_published: 1877, thumbnail: 'https://images.gr-assets.com/books/1374739885l/3711.jpg')
     @book_2 = Book.create(title: "Babe", page_count: 428, year_published: 1911)
     @book_3 = Book.create(title: "A Game of Thrones", page_count: 811, year_published: 1990)
     @author_1 = @book_1.authors.create(name: "Martin")
@@ -33,19 +33,18 @@ describe "As a vistitor" do
       end
 
       within("section#book-stats") do
+        expect(page).to have_css('img', :class => 'thumbnail-img')
         expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
         expect(page).to have_content("Author(s): #{@author_1.name}")
         expect(page).to have_content("Pages: #{@book_1.page_count}")
         expect(page).to have_content("Year Published: #{@book_1.year_published}")
       end
-      
+
       within("#top-reviews") do
         expect(page).to have_content(@review_2.title)
         expect(page).to have_content("Rated #{@review_2.rating} by #{@review_2.user.name}")
         expect(page).to have_content(@review_6.title)
         expect(page).to have_content("Rated #{@review_6.rating} by #{@review_6.user.name}")
-        # expect(page).to have_content(@review_3.title)
-        # expect(page).to have_content("Rated #{@review_3.rating} by #{@review_3.user.name}")
       end
 
       within("#bottom-reviews") do
@@ -53,8 +52,6 @@ describe "As a vistitor" do
         expect(page).to have_content("Rated #{@review_3.rating} by #{@review_3.user.name}")
         expect(page).to have_content(@review_4.title)
         expect(page).to have_content("Rated #{@review_4.rating} by #{@review_4.user.name}")
-        # expect(page).to have_content(@review_6.title)
-        # expect(page).to have_content("Rated #{@review_6.rating} by #{@review_6.user.name}")
       end
 
       within("main") do

@@ -20,7 +20,7 @@ describe "As a vistitor" do
       within(".new-review-container") do
         expect(page).to have_content("Book Title: #{@book.title}")
       end
-      
+
       within("#new_review") do
         expect(page).to have_content("User Name")
         expect(page).to have_content("Review Title")
@@ -77,7 +77,7 @@ describe "As a vistitor" do
     end
   end
 
-    describe 'if I enter an invalid rating (not 1 to 5)' do
+  describe 'if I enter an invalid rating (not 1 to 5)' do
 
     it 'should not save and redirect to new review' do
 
@@ -102,6 +102,30 @@ describe "As a vistitor" do
       within "body" do
         expect(page).to have_content(@book.title)
         expect(page).to_not have_content("Rating: 3")
+      end
+
+    end
+
+  end
+
+  describe 'if a user has already submitted a review for a book' do
+
+    it 'should not save and redirect to new review' do
+
+      @user_1 = User.create(name: "John")
+      @review_1 = @user_1.reviews.create(title: "Flirtation", review: "There are ways.", rating: 5, book: @book)
+
+      visit "/reviews/new?book=#{@book.id}"
+
+      page.fill_in 'User Name', with: 'John'
+      page.fill_in 'Review Title', with: 'Amazing book'
+      page.fill_in 'Rating', with: '4'
+      page.fill_in 'Review', with: 'It was just okay.'
+      click_button("Create Review")
+
+      within "body" do
+        expect(page).to have_content(@book.title)
+        expect(page).to_not have_content("Amazing book")
       end
 
     end

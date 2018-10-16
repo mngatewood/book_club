@@ -42,7 +42,7 @@ describe User, type: :model do
     it "should return three users with most reviews" do
 
       most_active_users = User.most_active_users
-      
+
       expect(most_active_users).to eq([@user_2, @user_3, @user_1])
 
     end
@@ -50,25 +50,26 @@ describe User, type: :model do
     it "should return id for matching name" do
 
       id = User.get_user_id(@user_2.name)
-      
+
       expect(id).to eq(@user_2.id)
 
     end
 
     it "should return nil if no matching name found" do
-      
+
       id = User.name_exists?("Jack")
-      
+
       expect(id).to eq(false)
-      
+
     end
 
     it "should create a new user if name does not exist" do
-      
+
       id = User.get_user_id("Jack")
-      
+
       expect(id).to eq(6)
-      
+
     end
+
   end
 end

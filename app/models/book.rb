@@ -66,6 +66,12 @@ class Book < ApplicationRecord
     .group(:id)
     .order("avg_rating DESC")
     .limit(3)
-  end  
+  end
+
+  def user_review_exists?(user_id)
+    reviews.any? do |review|
+      review.user_id == user_id
+    end
+  end
 
 end
