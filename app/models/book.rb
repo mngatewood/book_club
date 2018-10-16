@@ -41,11 +41,15 @@ class Book < ApplicationRecord
   end
 
   def top_three_reviews
-    reviews.order("rating DESC").limit(3)
+    reviews_count = (reviews.count / 2.0).ceil
+    top_reviews = reviews.order("rating DESC").limit(reviews_count)
+    top_three_reviews = top_reviews[0..2]
   end
 
   def bottom_three_reviews
-    reviews.order("rating ASC").limit(3)
+    reviews_count = (reviews.count / 2.0).floor
+    bottom_reviews = reviews.order("rating ASC").limit(reviews_count)
+    bottom_three_reviews = bottom_reviews[0..2]
   end
 
   def self.bottom_three_books
