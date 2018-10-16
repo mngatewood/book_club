@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def self.get_user_id(name)
-    if name_exists?(name)
+    if name_exists?(name.titleize)
       return name_exists?(name)
     else
       new_user = User.create(name: name)
