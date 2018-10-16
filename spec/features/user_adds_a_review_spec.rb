@@ -76,4 +76,34 @@ describe "As a vistitor" do
 
     end
   end
+
+    describe 'if I enter an invalid rating (not 1 to 5)' do
+
+    it 'should not save and redirect to new review' do
+
+      visit "/reviews/new?book=#{@book.id}"
+
+      page.fill_in 'User Name', with: 'michael jones'
+      page.fill_in 'Review Title', with: 'not bad'
+      page.fill_in 'Rating', with: '0'
+      page.fill_in 'Review', with: 'It was just okay.'
+      click_button("Create Review")
+
+      within "body" do
+        expect(page).to have_content(@book.title)
+        expect(page).to_not have_content("Rating: 0")
+      end
+
+      page.fill_in 'User Name', with: 'michael jones'
+      page.fill_in 'Review Title', with: 'not bad'
+      page.fill_in 'Rating', with: '6'
+      click_button("Create Review")
+
+      within "body" do
+        expect(page).to have_content(@book.title)
+        expect(page).to_not have_content("Rating: 3")
+      end
+
+    end
+  end
 end
