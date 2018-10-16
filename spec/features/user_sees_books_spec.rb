@@ -25,7 +25,7 @@ describe "As a vistitor" do
 
   describe "When I visit books index" do
 
-    it 'should see all books' do
+    it 'should show all books' do
 
       visit '/books'
 
