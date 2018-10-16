@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   end
 
   validates_presence_of :title, :review, :rating, :user_id, :book_id
+  validates :rating, :inclusion => 1..5
 
   belongs_to :user
   belongs_to :book
