@@ -1,9 +1,9 @@
 <header id="user-heading">
 </header>
-<nav>
+<nav id="sticky-header" class="user-show-nav">
   <h1>All Reviews by <%= @user.name %></h1>
   <form>
-    <h3>Sort by: </h3>
+    <h3 class="sort-label">Sort by: </h3>
     <select id="sort-books" onchange="location = this.value;">
       <option
         value="<%= @user.id %>"
@@ -27,12 +27,11 @@
       <h3>Book: <a href="/books/<%=review.book.id%>"><%= review.book.title %></a></h3>
       <h3>Rating: <%= review.rating %></h3>
       <h3>Title: <%= review.title %></h3>
-      <div class="delete-button">
+      <div class="delete-review-button">
         <%= button_to 'Delete Review', review, :method => 'delete' %>
       </div>
       <h3>Review:</h3>
-      <p><%= review.review %></p>
-      <hr>
+      <p class="review-text"><%= review.review %></p>
     </article>
   <% end %>
 </main>
