@@ -360,3 +360,14 @@ p.review-text,
   line-height: 24px;
 }
 
+#book-image-container {
+  padding: 0;
+  min-width: unset;
+  width: auto;
+}
+
+.stats-container img {
+  height: calc(100% - 24px);
+  width: 120px;
+  border-radius: 3px;
+}
