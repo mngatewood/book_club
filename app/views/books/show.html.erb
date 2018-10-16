@@ -1,4 +1,4 @@
-<header id="book-heading">
+<nav id="sticky-header" class="book-heading">
     <h1>
       <%=@book.title%>
     </h1>
@@ -11,7 +11,7 @@
   <div class="delete-button">
     <%= button_to 'Delete Book', @book, :method => 'delete' %>
   </div>
-</header>
+</nav>
 <section id="book-stats">
   <div class="stats-container">
     <h2>Book Information</h2>

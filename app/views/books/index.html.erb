@@ -1,4 +1,4 @@
-<header>
+<header class="books-index-header">
   <input class="add-button" type="button" onclick="location ='books/new';" value="Add a Book" />
 </header>
 <section id="books-stats">
@@ -27,10 +27,10 @@
     </ul>
   </div>
 </section>
-<nav>
+<nav id="sticky-header">
   <h1> All Books </h1>
   <form>
-    <h3>Sort by: </h3>
+    <h3 class="sort-label">Sort by: </h3>
     <select id="sort-books" onchange="location = this.value;">
       <option
         value="books"

@@ -15,9 +15,12 @@ describe "As a vistitor" do
 
       within("#new-review-heading") do
         expect(page).to have_content("Add a Review")
-        expect(page).to have_content("Book Title: #{@book.title}")
       end
 
+      within(".new-review-container") do
+        expect(page).to have_content("Book Title: #{@book.title}")
+      end
+      
       within("#new_review") do
         expect(page).to have_content("User Name")
         expect(page).to have_content("Review Title")
@@ -39,7 +42,7 @@ describe "As a vistitor" do
       page.fill_in 'Review', with: 'It was just okay.'
       click_button("Create Review")
 
-      within("header") do
+      within("nav") do
         expect(page).to have_content(@book.title)
       end
 
@@ -64,11 +67,8 @@ describe "As a vistitor" do
       page.fill_in 'Review', with: 'It was just okay.'
       click_button("Create Review")
 
-      within("header") do
-        expect(page).to have_content(@book.title)
-      end
-
       within "body" do
+        expect(page).to have_content(@book.title)
         expect(page).to_not have_content("Not Bad reviewed by Bob")
         expect(page).to_not have_content("Rating: 3")
         expect(page).to_not have_content("It was just okay")

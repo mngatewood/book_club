@@ -5,14 +5,54 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 12px 24px 24px 24px;
+  padding: 0;
+  margin: 0;
 }
 
-.books-container,
+.site-title {
+  position: fixed;
+  top: 0;
+  margin: 12px;
+  width: 100%;
+  background-color: white;
+  height: 60px;
+  margin: 0;
+  padding: 12px 24px;
+  z-index: 1;
+}
+
+.site-title h1 {
+  font-family: 'Candal', sans-serif;
+  background-color: white;
+  font-size: 38px;
+  margin-top: 0;
+}
+
+header {
+  margin-top: 80px;
+}
+
+#books-stats, 
 #book-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 100px 24px 0 24px;
+}
+
+#books-stats {
+  padding-top: 24px;
+}
+
+#book-stats {
+  padding-top: 0;
+  padding-right: 24px;
+}
+
+.books-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 0 24px;
 }
 
 .stats-container,
@@ -21,6 +61,7 @@ body {
 .author-book-container,
 .new-review-container,
 .new-book-container {
+  position: relative;
   background-color: white;
   margin: 12px;
   width: 26%;
@@ -38,8 +79,13 @@ body {
   min-width: 300px;
 }
 
+#user-reviews-container {
+  padding: 0 48px 24px 24px;
+}
+
 .review-container,
 .author-book-container,
+#book-reviews-container,
 .new-review-container, 
 .new-book-container {
   width: calc(100% - 72px);
@@ -48,18 +94,36 @@ body {
   margin: 24px 12px;
 }
 
+.review-container {
+  margin-right: 0;
+  width: calc(100% - 48px);
+}
+
+#book-reviews-container {
+  margin: 0;
+}
+
 #book-reviews-container h2, 
 #author-books-container h2 {
   margin-left: 12px; 
 }
 
+.author-book-container {
+  padding: 12px 24px;
+  margin-left: 36px;
+  margin-right: 36px;
+  width: calc(100% - 120px);
+}
+
 .new-review-container {
-  width: calc(100% - 72px);
+  width: calc(100% - 120px);
+  margin-left: 36px;
 }
 
 .new-book-container {
-  width: 440px;
+  width: 460px;
   padding: 48px 36px 0 36px;
+  margin-left: 36px;
 }
 
 .new-review-container input,
@@ -67,7 +131,7 @@ body {
 .new-review-container textarea {
   background-color: aliceblue;
   position: relative;
-  left: 130px;
+  left: 140px;
   top: -24px;
   margin-bottom: 18px;
   width: 300px;
@@ -118,14 +182,16 @@ select {
   height: 32px;
   font-size: 18px;
   width: 100px;
-  box-shadow: 1px 2px 6px gray;
+  box-shadow: 3px 3px 6px gray;
+  z-index: 10;
 }
 
 .delete-button,
 .add-button {
-  position:absolute;
-  top: 50px;
+  position: fixed;
+  top: 30px;
   right:44px;
+  z-index: 10;
 }
 
 select {
@@ -136,19 +202,61 @@ select {
 }
 
 #add-review-button {
-  top: 80px;
+  right: 180px;
 }
 
-#books-stats, 
-#book-stats {
-  display: flex;
-  justify-content: space-around
+.delete-review-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.user-show-nav {
+  margin-top: 100px;
+}
+
+.book-heading {
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+#author-heading {
+  margin-top: 120px;
+  margin-left: 24px;
 }
 
 nav,
 .book-title  {
   display: flex;
   justify-content: space-between;
+  padding: 0 24px;
+}
+
+h3.sort-label {
+  z-index: 11;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% - 48px);
+  background-color: white;
+  margin-top: 0;
+  padding-left: 24px;
+  z-index: 11;
+}
+
+.sticky + .books-container {
+  padding-top: 75px;
+}
+
+.sticky + #book-stats {
+  padding-top: 175px;
+}
+
+.sticky + #user-reviews-container {
+  padding-top: 110px;
 }
 
 h1 {
@@ -228,6 +336,12 @@ hr {
 
 label {
   display: block;
+}
+
+#new-book-heading,
+#new-review-heading {
+  padding-top: 24px;
+  padding-left: 24px;
 }
 
 #new_review #review_rating {
