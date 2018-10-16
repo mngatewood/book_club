@@ -41,7 +41,7 @@ describe "As a vistitor" do
       page.fill_in 'Year Published', with: '2009'
       click_button("Create Book")
       
-      within("header") do
+      within("nav") do
         expect(page).to have_content("Killing Road")
       end
 
@@ -59,7 +59,7 @@ describe "As a vistitor" do
       page.fill_in 'Year Published', with: '2015'
       click_button("Create Book")
 
-      within("header") do
+      within("nav") do
         expect(page).to have_content("Dragon Prince")
       end
 
@@ -85,7 +85,7 @@ describe "As a vistitor" do
         expect(page).to have_content("Add a Book")
       end
       
-      within("header") do
+      within("main") do
         expect(page).to_not have_content("Black Friday")
         expect(page).to_not have_content("Author(s): Alexandre Dumas")
         expect(page).to_not have_content("Pages: 255")

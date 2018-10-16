@@ -28,7 +28,7 @@ describe "As a vistitor" do
     it 'should see a book' do
       visit "/books/#{@book_1.id}"
 
-      within("header") do
+      within("nav") do
         expect(page).to have_content(@book_1.title)
       end
 
