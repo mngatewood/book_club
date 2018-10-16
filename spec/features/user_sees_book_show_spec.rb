@@ -38,14 +38,14 @@ describe "As a vistitor" do
         expect(page).to have_content("Pages: #{@book_1.page_count}")
         expect(page).to have_content("Year Published: #{@book_1.year_published}")
       end
-
+      
       within("#top-reviews") do
         expect(page).to have_content(@review_2.title)
         expect(page).to have_content("Rated #{@review_2.rating} by #{@review_2.user.name}")
         expect(page).to have_content(@review_6.title)
         expect(page).to have_content("Rated #{@review_6.rating} by #{@review_6.user.name}")
-        expect(page).to have_content(@review_3.title)
-        expect(page).to have_content("Rated #{@review_3.rating} by #{@review_3.user.name}")
+        # expect(page).to have_content(@review_3.title)
+        # expect(page).to have_content("Rated #{@review_3.rating} by #{@review_3.user.name}")
       end
 
       within("#bottom-reviews") do
@@ -53,8 +53,8 @@ describe "As a vistitor" do
         expect(page).to have_content("Rated #{@review_3.rating} by #{@review_3.user.name}")
         expect(page).to have_content(@review_4.title)
         expect(page).to have_content("Rated #{@review_4.rating} by #{@review_4.user.name}")
-        expect(page).to have_content(@review_6.title)
-        expect(page).to have_content("Rated #{@review_6.rating} by #{@review_6.user.name}")
+        # expect(page).to have_content(@review_6.title)
+        # expect(page).to have_content("Rated #{@review_6.rating} by #{@review_6.user.name}")
       end
 
       within("main") do

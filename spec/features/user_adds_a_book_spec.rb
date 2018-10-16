@@ -86,11 +86,12 @@ describe "As a vistitor" do
       within("nav") do
         expect(page).to have_content("Killing Road")
       end
-      
+
       within("section") do
         expect(page).to have_content("Author(s): Dave Mustaine")
         expect(page).to have_content("Pages: 176")
         expect(page).to have_content("Year Published: 2009")
+        expect(page).to have_css('img', :class => 'thumbnail-img')
       end
 
     end
