@@ -42,7 +42,7 @@ class Book < ApplicationRecord
 
   def top_three_reviews
     reviews_count = (reviews.count / 2.0).ceil
-    top_reviews = reviews.order("rating DESC").limit(reviews_count)
+    top_reviews = reviews.order("rating DESC, id DESC ").limit(reviews_count)
     top_three_reviews = top_reviews[0..2]
   end
 
