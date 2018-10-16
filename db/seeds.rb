@@ -147,7 +147,7 @@ books = [
   {title: "The Lost World", page_count: 272, year_published: 2003, thumbnail: "https://images.gr-assets.com/books/1509286533l/36497123.jpg" },
   {title: "The Tempest", page_count: 218, year_published: 2004, thumbnail: "https://images.gr-assets.com/books/1327793692l/12985.jpg" },
   {title: "The Three Musketeers", page_count: 625, year_published: 2001, thumbnail: "https://images.gr-assets.com/books/1507321525l/36365471.jpg" },
-  {title: "Ulysses", page_count: 192, year_published: 1987, thumbnail: "https://images.gr-assets.com/books/1495343629l/22259.jpg" },
+  {title: "Ulysses", page_count: 192, year_published: 1987, thumbnail: "https://images.gr-assets.com/books/1385322538l/30339.jpg" },
   {title: "Veronica", page_count: 240, year_published: 2005, thumbnail: "https://images.gr-assets.com/books/1495343629l/22259.jpg" },
   {title: "White Teeth", page_count: 448, year_published: 2001, thumbnail: "https://images.gr-assets.com/books/1374739885l/3711.jpg" }
 ]

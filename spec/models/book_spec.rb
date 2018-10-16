@@ -65,13 +65,13 @@ describe Book, type: :model do
     it 'can return the top 3 reviews' do
       top_three_reviews = @book_1.top_three_reviews
 
-      expect(top_three_reviews).to eq([@review_2,@review_6,@review_3])
+      expect(top_three_reviews).to eq([@review_2, @review_6])
     end
 
     it 'can return the bottom 3 reviews' do
       bottom_three_reviews = @book_1.bottom_three_reviews
 
-      expect(bottom_three_reviews).to eq([@review_3, @review_4, @review_6])
+      expect(bottom_three_reviews).to eq([@review_3, @review_4])
     end
 
     it 'returns the 3 highest rated book titles' do
