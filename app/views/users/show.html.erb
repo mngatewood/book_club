@@ -12,11 +12,19 @@
       </option>
       <option value="<%= @user.id %>?sort=date-desc"
         <%= "selected='selected'" if @sort == "date-desc" %>>
-        Newest First
+        Newest to Oldest
       </option>
       <option value="<%= @user.id %>?sort=date-asc"
         <%= "selected='selected'" if @sort == "date-asc" %>>
-        Oldest First
+        Oldest to Newest
+      </option>
+      <option value="<%= @user.id %>?sort=rating-desc"
+        <%= "selected='selected'" if @sort == "rating-desc" %>>
+        Highest to Lowest Rating
+      </option>
+      <option value="<%= @user.id %>?sort=rating-asc"
+        <%= "selected='selected'" if @sort == "rating-asc" %>>
+        Lowest to Highest Rating
       </option>
     </select>
   </form>
