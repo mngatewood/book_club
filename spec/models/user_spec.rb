@@ -49,23 +49,15 @@ describe User, type: :model do
 
     it "should return id for matching name" do
 
-      id = User.get_user_id(@user_2.name)
+      id = User.get_id(@user_2.name)
 
       expect(id).to eq(@user_2.id)
 
     end
 
-    it "should return nil if no matching name found" do
-
-      id = User.name_exists?("Jack")
-
-      expect(id).to eq(false)
-
-    end
-
     it "should create a new user if name does not exist" do
 
-      id = User.get_user_id("Jack")
+      id = User.get_id("Jack")
 
       expect(id).to eq(6)
 
