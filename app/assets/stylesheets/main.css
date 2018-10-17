@@ -7,6 +7,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
+  min-width: 600px;
 }
 
 .site-title {
@@ -363,11 +364,18 @@ p.review-text,
 #book-image-container {
   padding: 0;
   min-width: unset;
-  width: auto;
+  max-width: 140px;
 }
 
 .stats-container img {
   height: calc(100% - 24px);
   width: 120px;
   border-radius: 3px;
+}
+
+@media only screen and (max-width: 1000px) {
+  #book-stats,
+  #books-stats {
+    flex-wrap: wrap;
+  }
 }
