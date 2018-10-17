@@ -16,18 +16,13 @@ class User < ApplicationRecord
     .limit(3)
   end
 
-  def self.name_exists?(name)
-    user = User.find_by(name: name)
-    user ? user.id : false
-  end
-
-  def self.get_user_id(name)
-    if name_exists?(name.titleize)
-      return name_exists?(name)
+  def self.get_id(name)
+    if User.all.pluck(:name).include?(name.titleize)
+      user = User.find_by(name: name.titleize)
     else
-      new_user = User.create(name: name)
-      return new_user.id
+      user = User.create(name: name)
     end
+    return user.id
   end
 
 
