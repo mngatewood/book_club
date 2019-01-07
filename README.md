@@ -1,25 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Book Club is a web application that allows visitors to browse books, authors, and book reviews.  The interface allows resources to be sorted by a variety of parameters and there are pages for viewing a specific book, author, or user reviews.  The application provides full CRUD functionality with the ability to view, create, edit, and delete books, authors, users, and reviews.  Summary data on the books index page (Highest Rated Books, Lowest Rated Books, and Users With Most Reviews) is provided using ActiveRecord queries.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# book_club
+The application was built on Rails 5 with a PostgreSQL database and is tested using RSpec and Capybara.
